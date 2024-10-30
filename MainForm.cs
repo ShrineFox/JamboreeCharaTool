@@ -90,7 +90,13 @@ namespace JamboreeCharaTool
                         string beaFile = $"message~{language.Item1}.nx.bea";
                         if (Path.GetFileName(file) == beaFile)
                         {
-                            // Open BEA
+                            // (Re)-Create Temp folder
+                            string tempFolder = $"Temp\\{language.Item1}";
+                            if (Directory.Exists(tempFolder))
+                                Directory.Delete(tempFolder);
+                            Directory.CreateDirectory(tempFolder);
+
+                            // Extract MSBT from BEA
                             using (FileStream fs = new FileStream(file, FileMode.Open))
                             {
                                 BezelEngineArchive bea = new BezelEngineArchive(fs);
@@ -98,7 +104,15 @@ namespace JamboreeCharaTool
                                 {
                                     // Extract im_common.msbt
                                     if (archiveFile.Key.Contains("im_common"))
-                                        File.WriteAllBytes(Path.GetFileName(archiveFile.Key), archiveFile.Value.FileData);
+                                    {
+                                        var bytes = archiveFile.Value.FileData;
+                                        var outPath = Path.Combine(tempFolder, Path.GetFileName(archiveFile.Key));
+                                        File.WriteAllBytes(outPath, bytes);
+                                        
+                                        using (FileSys.WaitForFile(outPath)) { };
+
+                                        // Convert to YAML
+                                    }
                                 }
                             }
                         }

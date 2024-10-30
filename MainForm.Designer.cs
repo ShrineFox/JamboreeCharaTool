@@ -30,300 +30,291 @@ namespace JamboreeCharaTool
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toggleThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainer_Main = new System.Windows.Forms.SplitContainer();
-            this.metroSetTabControl_Main = new MetroSet_UI.Controls.MetroSetTabControl();
-            this.tabPage_Graphics = new System.Windows.Forms.TabPage();
-            this.tlp_Graphics = new System.Windows.Forms.TableLayoutPanel();
-            this.tabPage_Sound = new System.Windows.Forms.TabPage();
-            this.tabPage_Text = new System.Windows.Forms.TabPage();
-            this.tlp_Text = new System.Windows.Forms.TableLayoutPanel();
-            this.rtb_Log = new System.Windows.Forms.RichTextBox();
-            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fromFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage_Overview = new System.Windows.Forms.TabPage();
-            this.tlp_Sound = new System.Windows.Forms.TableLayoutPanel();
-            this.tlp_Overview = new System.Windows.Forms.TableLayoutPanel();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_Main)).BeginInit();
-            this.splitContainer_Main.Panel1.SuspendLayout();
-            this.splitContainer_Main.Panel2.SuspendLayout();
-            this.splitContainer_Main.SuspendLayout();
-            this.metroSetTabControl_Main.SuspendLayout();
-            this.tabPage_Graphics.SuspendLayout();
-            this.tabPage_Sound.SuspendLayout();
-            this.tabPage_Text.SuspendLayout();
-            this.tabPage_Overview.SuspendLayout();
-            this.SuspendLayout();
+            menuStrip1 = new System.Windows.Forms.MenuStrip();
+            fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            loadProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            fromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            fromFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toggleThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            splitContainer_Main = new System.Windows.Forms.SplitContainer();
+            metroSetTabControl_Main = new MetroSet_UI.Controls.MetroSetTabControl();
+            tabPage_Overview = new System.Windows.Forms.TabPage();
+            tlp_Overview = new System.Windows.Forms.TableLayoutPanel();
+            tabPage_Graphics = new System.Windows.Forms.TabPage();
+            tlp_Graphics = new System.Windows.Forms.TableLayoutPanel();
+            tabPage_Sound = new System.Windows.Forms.TabPage();
+            tlp_Sound = new System.Windows.Forms.TableLayoutPanel();
+            tabPage_Text = new System.Windows.Forms.TabPage();
+            tlp_Text = new System.Windows.Forms.TableLayoutPanel();
+            rtb_Log = new System.Windows.Forms.RichTextBox();
+            menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer_Main).BeginInit();
+            splitContainer_Main.Panel1.SuspendLayout();
+            splitContainer_Main.Panel2.SuspendLayout();
+            splitContainer_Main.SuspendLayout();
+            metroSetTabControl_Main.SuspendLayout();
+            tabPage_Overview.SuspendLayout();
+            tabPage_Graphics.SuspendLayout();
+            tabPage_Sound.SuspendLayout();
+            tabPage_Text.SuspendLayout();
+            SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.AllowDrop = true;
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.toggleThemeToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(2, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(778, 28);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.AllowDrop = true;
+            menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, toggleThemeToolStripMenuItem });
+            menuStrip1.Location = new System.Drawing.Point(2, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new System.Drawing.Size(778, 28);
+            menuStrip1.TabIndex = 0;
+            menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadProjectToolStripMenuItem,
-            this.saveProjectToolStripMenuItem,
-            this.importToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
-            this.fileToolStripMenuItem.Text = "File";
+            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { loadProjectToolStripMenuItem, saveProjectToolStripMenuItem, importToolStripMenuItem });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            fileToolStripMenuItem.Text = "File";
             // 
             // loadProjectToolStripMenuItem
             // 
-            this.loadProjectToolStripMenuItem.Name = "loadProjectToolStripMenuItem";
-            this.loadProjectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.loadProjectToolStripMenuItem.Text = "Load Project";
+            loadProjectToolStripMenuItem.Name = "loadProjectToolStripMenuItem";
+            loadProjectToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            loadProjectToolStripMenuItem.Text = "Load Project";
             // 
             // saveProjectToolStripMenuItem
             // 
-            this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
-            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.saveProjectToolStripMenuItem.Text = "Save Project";
-            // 
-            // toggleThemeToolStripMenuItem
-            // 
-            this.toggleThemeToolStripMenuItem.Name = "toggleThemeToolStripMenuItem";
-            this.toggleThemeToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
-            this.toggleThemeToolStripMenuItem.Text = "Toggle Theme";
-            // 
-            // splitContainer_Main
-            // 
-            this.splitContainer_Main.AllowDrop = true;
-            this.splitContainer_Main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer_Main.Location = new System.Drawing.Point(2, 28);
-            this.splitContainer_Main.Name = "splitContainer_Main";
-            this.splitContainer_Main.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer_Main.Panel1
-            // 
-            this.splitContainer_Main.Panel1.AllowDrop = true;
-            this.splitContainer_Main.Panel1.Controls.Add(this.metroSetTabControl_Main);
-            // 
-            // splitContainer_Main.Panel2
-            // 
-            this.splitContainer_Main.Panel2.AllowDrop = true;
-            this.splitContainer_Main.Panel2.Controls.Add(this.rtb_Log);
-            this.splitContainer_Main.Size = new System.Drawing.Size(778, 573);
-            this.splitContainer_Main.SplitterDistance = 508;
-            this.splitContainer_Main.TabIndex = 2;
-            // 
-            // metroSetTabControl_Main
-            // 
-            this.metroSetTabControl_Main.AllowDrop = true;
-            this.metroSetTabControl_Main.AnimateEasingType = MetroSet_UI.Enums.EasingType.CubeOut;
-            this.metroSetTabControl_Main.AnimateTime = 200;
-            this.metroSetTabControl_Main.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.metroSetTabControl_Main.Controls.Add(this.tabPage_Overview);
-            this.metroSetTabControl_Main.Controls.Add(this.tabPage_Graphics);
-            this.metroSetTabControl_Main.Controls.Add(this.tabPage_Sound);
-            this.metroSetTabControl_Main.Controls.Add(this.tabPage_Text);
-            this.metroSetTabControl_Main.Cursor = System.Windows.Forms.Cursors.Default;
-            this.metroSetTabControl_Main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroSetTabControl_Main.IsDerivedStyle = true;
-            this.metroSetTabControl_Main.ItemSize = new System.Drawing.Size(100, 38);
-            this.metroSetTabControl_Main.Location = new System.Drawing.Point(0, 0);
-            this.metroSetTabControl_Main.Name = "metroSetTabControl_Main";
-            this.metroSetTabControl_Main.SelectedIndex = 0;
-            this.metroSetTabControl_Main.SelectedTextColor = System.Drawing.Color.White;
-            this.metroSetTabControl_Main.Size = new System.Drawing.Size(778, 508);
-            this.metroSetTabControl_Main.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.metroSetTabControl_Main.Speed = 100;
-            this.metroSetTabControl_Main.Style = MetroSet_UI.Enums.Style.Dark;
-            this.metroSetTabControl_Main.StyleManager = null;
-            this.metroSetTabControl_Main.TabIndex = 2;
-            this.metroSetTabControl_Main.TabStyle = MetroSet_UI.Enums.TabStyle.Style2;
-            this.metroSetTabControl_Main.ThemeAuthor = "Narwin";
-            this.metroSetTabControl_Main.ThemeName = "MetroDark";
-            this.metroSetTabControl_Main.UnselectedTextColor = System.Drawing.Color.Gray;
-            this.metroSetTabControl_Main.UseAnimation = false;
-            // 
-            // tabPage_Graphics
-            // 
-            this.tabPage_Graphics.AllowDrop = true;
-            this.tabPage_Graphics.Controls.Add(this.tlp_Graphics);
-            this.tabPage_Graphics.Location = new System.Drawing.Point(4, 42);
-            this.tabPage_Graphics.Name = "tabPage_Graphics";
-            this.tabPage_Graphics.Size = new System.Drawing.Size(770, 462);
-            this.tabPage_Graphics.TabIndex = 0;
-            this.tabPage_Graphics.Text = "Graphics";
-            // 
-            // tlp_Graphics
-            // 
-            this.tlp_Graphics.AllowDrop = true;
-            this.tlp_Graphics.ColumnCount = 2;
-            this.tlp_Graphics.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Graphics.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Graphics.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_Graphics.Location = new System.Drawing.Point(0, 0);
-            this.tlp_Graphics.Name = "tlp_Graphics";
-            this.tlp_Graphics.RowCount = 2;
-            this.tlp_Graphics.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tlp_Graphics.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.tlp_Graphics.Size = new System.Drawing.Size(770, 462);
-            this.tlp_Graphics.TabIndex = 3;
-            // 
-            // tabPage_Sound
-            // 
-            this.tabPage_Sound.AllowDrop = true;
-            this.tabPage_Sound.Controls.Add(this.tlp_Sound);
-            this.tabPage_Sound.Location = new System.Drawing.Point(4, 42);
-            this.tabPage_Sound.Name = "tabPage_Sound";
-            this.tabPage_Sound.Size = new System.Drawing.Size(770, 462);
-            this.tabPage_Sound.TabIndex = 1;
-            this.tabPage_Sound.Text = "Sound";
-            // 
-            // tabPage_Text
-            // 
-            this.tabPage_Text.Controls.Add(this.tlp_Text);
-            this.tabPage_Text.Location = new System.Drawing.Point(4, 42);
-            this.tabPage_Text.Name = "tabPage_Text";
-            this.tabPage_Text.Size = new System.Drawing.Size(770, 462);
-            this.tabPage_Text.TabIndex = 2;
-            this.tabPage_Text.Text = "Text";
-            // 
-            // tlp_Text
-            // 
-            this.tlp_Text.ColumnCount = 2;
-            this.tlp_Text.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Text.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Text.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_Text.Location = new System.Drawing.Point(0, 0);
-            this.tlp_Text.Name = "tlp_Text";
-            this.tlp_Text.RowCount = 1;
-            this.tlp_Text.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Text.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Text.Size = new System.Drawing.Size(770, 462);
-            this.tlp_Text.TabIndex = 3;
-            // 
-            // rtb_Log
-            // 
-            this.rtb_Log.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.rtb_Log.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_Log.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtb_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.rtb_Log.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.rtb_Log.Location = new System.Drawing.Point(0, 0);
-            this.rtb_Log.Name = "rtb_Log";
-            this.rtb_Log.ReadOnly = true;
-            this.rtb_Log.Size = new System.Drawing.Size(778, 61);
-            this.rtb_Log.TabIndex = 0;
-            this.rtb_Log.Text = "";
+            saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
+            saveProjectToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            saveProjectToolStripMenuItem.Text = "Save Project";
             // 
             // importToolStripMenuItem
             // 
-            this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fromFileToolStripMenuItem,
-            this.fromFolderToolStripMenuItem});
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.importToolStripMenuItem.Text = "Import...";
+            importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { fromFileToolStripMenuItem, fromFolderToolStripMenuItem });
+            importToolStripMenuItem.Name = "importToolStripMenuItem";
+            importToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            importToolStripMenuItem.Text = "Import...";
             // 
             // fromFileToolStripMenuItem
             // 
-            this.fromFileToolStripMenuItem.Name = "fromFileToolStripMenuItem";
-            this.fromFileToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.fromFileToolStripMenuItem.Text = "From File";
+            fromFileToolStripMenuItem.Name = "fromFileToolStripMenuItem";
+            fromFileToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
+            fromFileToolStripMenuItem.Text = "From File";
             // 
             // fromFolderToolStripMenuItem
             // 
-            this.fromFolderToolStripMenuItem.Name = "fromFolderToolStripMenuItem";
-            this.fromFolderToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.fromFolderToolStripMenuItem.Text = "From Folder";
-            this.fromFolderToolStripMenuItem.Click += new System.EventHandler(this.ImportFromFolder_Click);
+            fromFolderToolStripMenuItem.Name = "fromFolderToolStripMenuItem";
+            fromFolderToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
+            fromFolderToolStripMenuItem.Text = "From Folder";
+            fromFolderToolStripMenuItem.Click += ImportFromFolder_Click;
+            // 
+            // toggleThemeToolStripMenuItem
+            // 
+            toggleThemeToolStripMenuItem.Name = "toggleThemeToolStripMenuItem";
+            toggleThemeToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
+            toggleThemeToolStripMenuItem.Text = "Toggle Theme";
+            // 
+            // splitContainer_Main
+            // 
+            splitContainer_Main.AllowDrop = true;
+            splitContainer_Main.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainer_Main.Location = new System.Drawing.Point(2, 28);
+            splitContainer_Main.Name = "splitContainer_Main";
+            splitContainer_Main.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer_Main.Panel1
+            // 
+            splitContainer_Main.Panel1.AllowDrop = true;
+            splitContainer_Main.Panel1.Controls.Add(metroSetTabControl_Main);
+            // 
+            // splitContainer_Main.Panel2
+            // 
+            splitContainer_Main.Panel2.AllowDrop = true;
+            splitContainer_Main.Panel2.Controls.Add(rtb_Log);
+            splitContainer_Main.Size = new System.Drawing.Size(778, 573);
+            splitContainer_Main.SplitterDistance = 508;
+            splitContainer_Main.TabIndex = 2;
+            // 
+            // metroSetTabControl_Main
+            // 
+            metroSetTabControl_Main.AllowDrop = true;
+            metroSetTabControl_Main.AnimateEasingType = MetroSet_UI.Enums.EasingType.CubeOut;
+            metroSetTabControl_Main.AnimateTime = 200;
+            metroSetTabControl_Main.BackgroundColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            metroSetTabControl_Main.Controls.Add(tabPage_Overview);
+            metroSetTabControl_Main.Controls.Add(tabPage_Graphics);
+            metroSetTabControl_Main.Controls.Add(tabPage_Sound);
+            metroSetTabControl_Main.Controls.Add(tabPage_Text);
+            metroSetTabControl_Main.Dock = System.Windows.Forms.DockStyle.Fill;
+            metroSetTabControl_Main.IsDerivedStyle = true;
+            metroSetTabControl_Main.ItemSize = new System.Drawing.Size(100, 38);
+            metroSetTabControl_Main.Location = new System.Drawing.Point(0, 0);
+            metroSetTabControl_Main.Name = "metroSetTabControl_Main";
+            metroSetTabControl_Main.SelectedIndex = 0;
+            metroSetTabControl_Main.SelectedTextColor = System.Drawing.Color.White;
+            metroSetTabControl_Main.Size = new System.Drawing.Size(778, 508);
+            metroSetTabControl_Main.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            metroSetTabControl_Main.Speed = 100;
+            metroSetTabControl_Main.Style = MetroSet_UI.Enums.Style.Dark;
+            metroSetTabControl_Main.StyleManager = null;
+            metroSetTabControl_Main.TabIndex = 2;
+            metroSetTabControl_Main.TabStyle = MetroSet_UI.Enums.TabStyle.Style2;
+            metroSetTabControl_Main.ThemeAuthor = "Narwin";
+            metroSetTabControl_Main.ThemeName = "MetroDark";
+            metroSetTabControl_Main.UnselectedTextColor = System.Drawing.Color.Gray;
+            metroSetTabControl_Main.UseAnimation = false;
             // 
             // tabPage_Overview
             // 
-            this.tabPage_Overview.Controls.Add(this.tlp_Overview);
-            this.tabPage_Overview.Location = new System.Drawing.Point(4, 42);
-            this.tabPage_Overview.Name = "tabPage_Overview";
-            this.tabPage_Overview.Size = new System.Drawing.Size(770, 462);
-            this.tabPage_Overview.TabIndex = 3;
-            this.tabPage_Overview.Text = "Overview";
-            // 
-            // tlp_Sound
-            // 
-            this.tlp_Sound.AllowDrop = true;
-            this.tlp_Sound.ColumnCount = 2;
-            this.tlp_Sound.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Sound.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Sound.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_Sound.Location = new System.Drawing.Point(0, 0);
-            this.tlp_Sound.Name = "tlp_Sound";
-            this.tlp_Sound.RowCount = 2;
-            this.tlp_Sound.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tlp_Sound.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.tlp_Sound.Size = new System.Drawing.Size(770, 462);
-            this.tlp_Sound.TabIndex = 4;
+            tabPage_Overview.Controls.Add(tlp_Overview);
+            tabPage_Overview.Location = new System.Drawing.Point(4, 42);
+            tabPage_Overview.Name = "tabPage_Overview";
+            tabPage_Overview.Size = new System.Drawing.Size(770, 462);
+            tabPage_Overview.TabIndex = 3;
+            tabPage_Overview.Text = "Overview";
             // 
             // tlp_Overview
             // 
-            this.tlp_Overview.AllowDrop = true;
-            this.tlp_Overview.ColumnCount = 2;
-            this.tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlp_Overview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_Overview.Location = new System.Drawing.Point(0, 0);
-            this.tlp_Overview.Name = "tlp_Overview";
-            this.tlp_Overview.RowCount = 2;
-            this.tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.tlp_Overview.Size = new System.Drawing.Size(770, 462);
-            this.tlp_Overview.TabIndex = 4;
+            tlp_Overview.AllowDrop = true;
+            tlp_Overview.ColumnCount = 2;
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Overview.Dock = System.Windows.Forms.DockStyle.Fill;
+            tlp_Overview.Location = new System.Drawing.Point(0, 0);
+            tlp_Overview.Name = "tlp_Overview";
+            tlp_Overview.RowCount = 2;
+            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            tlp_Overview.Size = new System.Drawing.Size(770, 462);
+            tlp_Overview.TabIndex = 4;
+            // 
+            // tabPage_Graphics
+            // 
+            tabPage_Graphics.AllowDrop = true;
+            tabPage_Graphics.Controls.Add(tlp_Graphics);
+            tabPage_Graphics.Location = new System.Drawing.Point(4, 42);
+            tabPage_Graphics.Name = "tabPage_Graphics";
+            tabPage_Graphics.Size = new System.Drawing.Size(770, 462);
+            tabPage_Graphics.TabIndex = 0;
+            tabPage_Graphics.Text = "Graphics";
+            // 
+            // tlp_Graphics
+            // 
+            tlp_Graphics.AllowDrop = true;
+            tlp_Graphics.ColumnCount = 2;
+            tlp_Graphics.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Graphics.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Graphics.Dock = System.Windows.Forms.DockStyle.Fill;
+            tlp_Graphics.Location = new System.Drawing.Point(0, 0);
+            tlp_Graphics.Name = "tlp_Graphics";
+            tlp_Graphics.RowCount = 2;
+            tlp_Graphics.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            tlp_Graphics.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            tlp_Graphics.Size = new System.Drawing.Size(770, 462);
+            tlp_Graphics.TabIndex = 3;
+            // 
+            // tabPage_Sound
+            // 
+            tabPage_Sound.AllowDrop = true;
+            tabPage_Sound.Controls.Add(tlp_Sound);
+            tabPage_Sound.Location = new System.Drawing.Point(4, 42);
+            tabPage_Sound.Name = "tabPage_Sound";
+            tabPage_Sound.Size = new System.Drawing.Size(770, 462);
+            tabPage_Sound.TabIndex = 1;
+            tabPage_Sound.Text = "Sound";
+            // 
+            // tlp_Sound
+            // 
+            tlp_Sound.AllowDrop = true;
+            tlp_Sound.ColumnCount = 2;
+            tlp_Sound.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Sound.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Sound.Dock = System.Windows.Forms.DockStyle.Fill;
+            tlp_Sound.Location = new System.Drawing.Point(0, 0);
+            tlp_Sound.Name = "tlp_Sound";
+            tlp_Sound.RowCount = 2;
+            tlp_Sound.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            tlp_Sound.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            tlp_Sound.Size = new System.Drawing.Size(770, 462);
+            tlp_Sound.TabIndex = 4;
+            // 
+            // tabPage_Text
+            // 
+            tabPage_Text.Controls.Add(tlp_Text);
+            tabPage_Text.Location = new System.Drawing.Point(4, 42);
+            tabPage_Text.Name = "tabPage_Text";
+            tabPage_Text.Size = new System.Drawing.Size(770, 462);
+            tabPage_Text.TabIndex = 2;
+            tabPage_Text.Text = "Text";
+            // 
+            // tlp_Text
+            // 
+            tlp_Text.ColumnCount = 2;
+            tlp_Text.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Text.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Text.Dock = System.Windows.Forms.DockStyle.Fill;
+            tlp_Text.Location = new System.Drawing.Point(0, 0);
+            tlp_Text.Name = "tlp_Text";
+            tlp_Text.RowCount = 1;
+            tlp_Text.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Text.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Text.Size = new System.Drawing.Size(770, 462);
+            tlp_Text.TabIndex = 3;
+            // 
+            // rtb_Log
+            // 
+            rtb_Log.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            rtb_Log.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            rtb_Log.Dock = System.Windows.Forms.DockStyle.Fill;
+            rtb_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            rtb_Log.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            rtb_Log.Location = new System.Drawing.Point(0, 0);
+            rtb_Log.Name = "rtb_Log";
+            rtb_Log.ReadOnly = true;
+            rtb_Log.Size = new System.Drawing.Size(778, 61);
+            rtb_Log.TabIndex = 0;
+            rtb_Log.Text = "";
             // 
             // MainForm
             // 
-            this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(782, 603);
-            this.Controls.Add(this.splitContainer_Main);
-            this.Controls.Add(this.menuStrip1);
-            this.DropShadowEffect = false;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
-            this.HeaderHeight = -40;
-            this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(800, 650);
-            this.Name = "MainForm";
-            this.Opacity = 0.99D;
-            this.Padding = new System.Windows.Forms.Padding(2, 0, 2, 2);
-            this.ShowHeader = true;
-            this.ShowLeftRect = false;
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Style = MetroSet_UI.Enums.Style.Dark;
-            this.Text = "PersonaVCE v2.3.2";
-            this.TextColor = System.Drawing.Color.White;
-            this.ThemeName = "MetroDark";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.splitContainer_Main.Panel1.ResumeLayout(false);
-            this.splitContainer_Main.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_Main)).EndInit();
-            this.splitContainer_Main.ResumeLayout(false);
-            this.metroSetTabControl_Main.ResumeLayout(false);
-            this.tabPage_Graphics.ResumeLayout(false);
-            this.tabPage_Sound.ResumeLayout(false);
-            this.tabPage_Text.ResumeLayout(false);
-            this.tabPage_Overview.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AllowDrop = true;
+            AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackgroundColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            ClientSize = new System.Drawing.Size(782, 603);
+            Controls.Add(splitContainer_Main);
+            Controls.Add(menuStrip1);
+            DropShadowEffect = false;
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            HeaderHeight = -40;
+            MainMenuStrip = menuStrip1;
+            MinimumSize = new System.Drawing.Size(800, 650);
+            Name = "MainForm";
+            Opacity = 0.99D;
+            Padding = new System.Windows.Forms.Padding(2, 0, 2, 2);
+            ShowHeader = true;
+            ShowLeftRect = false;
+            SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            Style = MetroSet_UI.Enums.Style.Dark;
+            Text = "JamboreeCharaTool";
+            TextColor = System.Drawing.Color.White;
+            ThemeName = "MetroDark";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            splitContainer_Main.Panel1.ResumeLayout(false);
+            splitContainer_Main.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer_Main).EndInit();
+            splitContainer_Main.ResumeLayout(false);
+            metroSetTabControl_Main.ResumeLayout(false);
+            tabPage_Overview.ResumeLayout(false);
+            tabPage_Graphics.ResumeLayout(false);
+            tabPage_Sound.ResumeLayout(false);
+            tabPage_Text.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
