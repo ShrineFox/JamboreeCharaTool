@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using System.Linq;
-using System.Threading;
 using ShrineFox.IO;
-using System.Media;
 using MetroSet_UI.Forms;
 using BezelEngineArchive_Lib;
+using MessageStudio.Formats.BinaryText;
 
 namespace JamboreeCharaTool
 {
@@ -29,6 +26,11 @@ namespace JamboreeCharaTool
             new Tuple<string, string>("zhCN","Chinese (China)"),
             new Tuple<string, string>("zhTW","Chinese (Taiwan)")
         };
+
+        public class Project
+        {
+            List<CharaData> Characters { get; set; } = new List<CharaData>();
+        }
 
         public class CharaData
         {
@@ -55,6 +57,11 @@ namespace JamboreeCharaTool
         public MainForm()
         {
             InitializeComponent();
+            CreateDefaultProject();
+        }
+
+        private void CreateDefaultProject()
+        {
         }
 
         private void SetupTheme()
@@ -90,12 +97,6 @@ namespace JamboreeCharaTool
                         string beaFile = $"message~{language.Item1}.nx.bea";
                         if (Path.GetFileName(file) == beaFile)
                         {
-                            // (Re)-Create Temp folder
-                            string tempFolder = $"Temp\\{language.Item1}";
-                            if (Directory.Exists(tempFolder))
-                                Directory.Delete(tempFolder);
-                            Directory.CreateDirectory(tempFolder);
-
                             // Extract MSBT from BEA
                             using (FileStream fs = new FileStream(file, FileMode.Open))
                             {
@@ -106,12 +107,12 @@ namespace JamboreeCharaTool
                                     if (archiveFile.Key.Contains("im_common"))
                                     {
                                         var bytes = archiveFile.Value.FileData;
-                                        var outPath = Path.Combine(tempFolder, Path.GetFileName(archiveFile.Key));
-                                        File.WriteAllBytes(outPath, bytes);
-                                        
-                                        using (FileSys.WaitForFile(outPath)) { };
 
                                         // Convert to YAML
+                                        var decompressedBytes = new Zstd().Decompress(bytes);
+                                        var msbt = Msbt.FromBinary(decompressedBytes);
+                                        string yaml = msbt.ToYaml();
+                                        File.WriteAllText($"im_common_{language.Item1}.yml", yaml);
                                     }
                                 }
                             }

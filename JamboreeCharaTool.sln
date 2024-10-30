@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolbox", "..\Switch-Toolbo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "File_Format_Library", "..\Switch-Toolbox\File_Format_Library\File_Format_Library.csproj", "{A11705CF-A6A3-41C3-875A-E1CFD8080F09}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MsbtToYaml", "..\MsbtToYaml\src\MsbtToYaml\MsbtToYaml.csproj", "{B5AD610E-2711-4CA9-8538-70731989F663}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{A11705CF-A6A3-41C3-875A-E1CFD8080F09}.Release|x64.Build.0 = Release|Any CPU
 		{A11705CF-A6A3-41C3-875A-E1CFD8080F09}.Release|x86.ActiveCfg = Release|Any CPU
 		{A11705CF-A6A3-41C3-875A-E1CFD8080F09}.Release|x86.Build.0 = Release|Any CPU
+		{B5AD610E-2711-4CA9-8538-70731989F663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5AD610E-2711-4CA9-8538-70731989F663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5AD610E-2711-4CA9-8538-70731989F663}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B5AD610E-2711-4CA9-8538-70731989F663}.Debug|x64.Build.0 = Debug|Any CPU
+		{B5AD610E-2711-4CA9-8538-70731989F663}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B5AD610E-2711-4CA9-8538-70731989F663}.Debug|x86.Build.0 = Debug|Any CPU
+		{B5AD610E-2711-4CA9-8538-70731989F663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5AD610E-2711-4CA9-8538-70731989F663}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5AD610E-2711-4CA9-8538-70731989F663}.Release|x64.ActiveCfg = Release|Any CPU
+		{B5AD610E-2711-4CA9-8538-70731989F663}.Release|x64.Build.0 = Release|Any CPU
+		{B5AD610E-2711-4CA9-8538-70731989F663}.Release|x86.ActiveCfg = Release|Any CPU
+		{B5AD610E-2711-4CA9-8538-70731989F663}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

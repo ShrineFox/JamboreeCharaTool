@@ -7,6 +7,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MsbtToYaml\src\MsbtToYaml\MsbtToYaml.csproj" />
     <ProjectReference Include="..\ShrineFox.IO\ShrineFox.IO.csproj" />
     <ProjectReference Include="..\Switch-Toolbox\File_Format_Library\File_Format_Library.csproj" />
     <ProjectReference Include="..\Switch-Toolbox\Toolbox\Toolbox.csproj" />
@@ -15,8 +16,11 @@
     <Folder Include="Dependencies\Default\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MessageStudio" Version="1.1.1" />
     <PackageReference Include="MetroSet_UI" Version="2.0.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="SarcLibrary" Version="3.2.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="ZstdSharp.Port" Version="0.8.1" />
   </ItemGroup>
 </Project>
