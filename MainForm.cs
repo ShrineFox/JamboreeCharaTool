@@ -14,15 +14,19 @@ namespace JamboreeCharaTool
 {
     public partial class MainForm : MetroSetForm
     {
+        string selectedLanguage = "enUS";
         public MainForm()
         {
             InitializeComponent();
-            
+
             string defaultProjPath = "./Dependencies/Default/DefaultProject.json";
             if (File.Exists(defaultProjPath))
             {
                 project = JsonConvert.DeserializeObject<Project>(File.ReadAllText(defaultProjPath));
             }
+
+            toolStripComboBox_CharacterSelect.SelectedIndex = 0;
+            toolStripComboBox_SelectedLanguage.SelectedIndex = 0;
 
             PopulateForm();
         }
@@ -106,7 +110,7 @@ namespace JamboreeCharaTool
                             using (FileStream fs = new FileStream(file, FileMode.Open))
                             {
                                 BezelEngineArchive bea = new BezelEngineArchive(fs);
-                                foreach(var archiveFile in bea.FileList)
+                                foreach (var archiveFile in bea.FileList)
                                 {
                                     // Extract im_common.msbt
                                     if (archiveFile.Key.Contains("im_common"))
@@ -117,16 +121,16 @@ namespace JamboreeCharaTool
                                         var decompressedBytes = new Zstd().Decompress(bytes);
                                         MSBT msbt = new MSBT(decompressedBytes);
                                         var yamlLines = msbt.ToYaml().Split('\n');
-                                        
+
                                         // Get Names
                                         for (int i = 0; i < yamlLines.Length; i++)
                                         {
                                             if (yamlLines[i].StartsWith("  im_pc"))
                                             {
-                                                int id = Convert.ToInt32(yamlLines[i].Replace("  im_pc","").Split('_')[0]);
-                                                string name = yamlLines[i + 1].Replace("   Contents: ","").Replace("\r","");
+                                                int id = Convert.ToInt32(yamlLines[i].Replace("  im_pc", "").Split('_')[0]);
+                                                string name = yamlLines[i + 1].Replace("   Contents: ", "").Replace("\r", "");
 
-                                                switch(language.Item1)
+                                                switch (language.Item1)
                                                 {
                                                     case "deEU": importedCharaData.First(x => x.ID == id).Name_deEU = name; break;
                                                     case "enEU": importedCharaData.First(x => x.ID == id).Name_enEU = name; break;
@@ -136,7 +140,7 @@ namespace JamboreeCharaTool
                                                     case "frEU": importedCharaData.First(x => x.ID == id).Name_frEU = name; break;
                                                     case "itEU": importedCharaData.First(x => x.ID == id).Name_itEU = name; break;
                                                     case "jaJP": importedCharaData.First(x => x.ID == id).Name_jaJP = name; break;
-                                                    case "korKR": importedCharaData.First(x => x.ID == id).Name_korKR = name; break;
+                                                    case "koKR": importedCharaData.First(x => x.ID == id).Name_koKR = name; break;
                                                     case "nlEU": importedCharaData.First(x => x.ID == id).Name_nlEU = name; break;
                                                     case "ptBR": importedCharaData.First(x => x.ID == id).Name_ptBR = name; break;
                                                     case "ruEU": importedCharaData.First(x => x.ID == id).Name_ruEU = name; break;
@@ -161,13 +165,46 @@ namespace JamboreeCharaTool
                 var ogChar = project.Characters[i];
                 foreach (var newChar in importedCharaData.Where(x => x.ID == ogChar.ID))
                 {
-                    if (newChar != ogChar && WinFormsDialogs.ShowMessageBox("Replace Character?", 
+                    if (newChar != ogChar && WinFormsDialogs.ShowMessageBox("Replace Character?",
                         $"Replace data for the following character?\n{ogChar.Name_enUS} ==> {newChar.Name_enUS}"))
                     {
                         project.Characters[i] = newChar;
                     }
                 }
             }
+        }
+
+        private void SelectedCharacter_Changed(object sender, EventArgs e)
+        {
+            int index = toolStripComboBox_CharacterSelect.SelectedIndex;
+            if (index > 0)
+            {
+                var selectedCharacter = project.Characters[index - 1];
+
+                // TODO: Update fields in other tabs
+            }
+        }
+
+        private void SelectedLanguage_Changed(object sender, EventArgs e)
+        {
+            int index = toolStripComboBox_SelectedLanguage.SelectedIndex;
+            if (index > 0)
+            {
+                selectedLanguage = languages[index - 1].Item1;
+
+                // Overview
+                int charIndex = 0;
+                foreach (var label in tlp_Overview.GetAllControls<Label>())
+                {
+                    label.Text = project.Characters[charIndex].GetType().GetProperty($"Name_{selectedLanguage}").GetValue(project.Characters[charIndex]).ToString();
+                    charIndex++;
+                }
+            }
+        }
+
+        private void SaveProject_Click(object sender, EventArgs e)
+        {
+            SaveProject();
         }
     }
 }

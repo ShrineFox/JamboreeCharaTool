@@ -24,7 +24,7 @@ namespace JamboreeCharaTool
             new Tuple<string, string>("frEU","French (Europe)"),
             new Tuple<string, string>("itEU","Italian"),
             new Tuple<string, string>("jaJP","Japanese"),
-            new Tuple<string, string>("korKR","Korean"),
+            new Tuple<string, string>("koKR","Korean"),
             new Tuple<string, string>("nlEU","Dutch"),
             new Tuple<string, string>("ptBR","Portuguese"),
             new Tuple<string, string>("ruEU","Russian"),
@@ -48,7 +48,7 @@ namespace JamboreeCharaTool
             public string Name_frEU { get; set; } = "Dummy";
             public string Name_itEU { get; set; } = "Dummy";
             public string Name_jaJP { get; set; } = "Dummy";
-            public string Name_korKR { get; set; } = "Dummy";
+            public string Name_koKR { get; set; } = "Dummy";
             public string Name_nlEU { get; set; } = "Dummy";
             public string Name_ptBR { get; set; } = "Dummy";
             public string Name_ruEU { get; set; } = "Dummy";

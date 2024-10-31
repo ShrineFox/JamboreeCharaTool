@@ -86,20 +86,21 @@ namespace JamboreeCharaTool
             // loadProjectToolStripMenuItem
             // 
             loadProjectToolStripMenuItem.Name = "loadProjectToolStripMenuItem";
-            loadProjectToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            loadProjectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             loadProjectToolStripMenuItem.Text = "Load Project";
             // 
             // saveProjectToolStripMenuItem
             // 
             saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
-            saveProjectToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            saveProjectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             saveProjectToolStripMenuItem.Text = "Save Project";
+            saveProjectToolStripMenuItem.Click += SaveProject_Click;
             // 
             // importToolStripMenuItem
             // 
             importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { fromFileToolStripMenuItem, fromFolderToolStripMenuItem });
             importToolStripMenuItem.Name = "importToolStripMenuItem";
-            importToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            importToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             importToolStripMenuItem.Text = "Import...";
             // 
             // fromFileToolStripMenuItem
@@ -124,14 +125,18 @@ namespace JamboreeCharaTool
             // toolStripComboBox_CharacterSelect
             // 
             toolStripComboBox_CharacterSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            toolStripComboBox_CharacterSelect.Items.AddRange(new object[] { "--Select Character--", "Mario", "Luigi", "Peach", "Daisy", "Wario", "Waluigi", "Yoshi", "Toadette", "Toad", "Rosalina", "Donkey Kong", "Birdo", "Pauline", "Bowser", "Goomba", "Shy Guy", "Koopa Troopa", "Monty Mole", "Bowser Jr.", "Boo", "Spike", "Ninji" });
             toolStripComboBox_CharacterSelect.Name = "toolStripComboBox_CharacterSelect";
-            toolStripComboBox_CharacterSelect.Size = new System.Drawing.Size(121, 28);
+            toolStripComboBox_CharacterSelect.Size = new System.Drawing.Size(191, 28);
+            toolStripComboBox_CharacterSelect.SelectedIndexChanged += SelectedCharacter_Changed;
             // 
             // toolStripComboBox_SelectedLanguage
             // 
             toolStripComboBox_SelectedLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            toolStripComboBox_SelectedLanguage.Items.AddRange(new object[] { "--Select Language--", "German (Europe)", "English (Europe)", "English (North America)", "Spanish (North America)", "French (Canada)", "French (Europe)", "Italian (Europe)", "Japanese (Japan)", "Korean (South Korea)", "Dutch (Netherlands)", "Portuguese (Brazil)", "Russian (Europe)", "Chinese (China)", "Chinese (Taiwan)" });
             toolStripComboBox_SelectedLanguage.Name = "toolStripComboBox_SelectedLanguage";
-            toolStripComboBox_SelectedLanguage.Size = new System.Drawing.Size(121, 28);
+            toolStripComboBox_SelectedLanguage.Size = new System.Drawing.Size(161, 28);
+            toolStripComboBox_SelectedLanguage.SelectedIndexChanged += SelectedLanguage_Changed;
             // 
             // splitContainer_Main
             // 
@@ -185,6 +190,7 @@ namespace JamboreeCharaTool
             // 
             // tabPage_Overview
             // 
+            tabPage_Overview.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
             tabPage_Overview.Controls.Add(pnl_Overview);
             tabPage_Overview.Location = new System.Drawing.Point(4, 42);
             tabPage_Overview.Name = "tabPage_Overview";
@@ -225,6 +231,7 @@ namespace JamboreeCharaTool
             // tabPage_Graphics
             // 
             tabPage_Graphics.AllowDrop = true;
+            tabPage_Graphics.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
             tabPage_Graphics.Controls.Add(tlp_Graphics);
             tabPage_Graphics.Location = new System.Drawing.Point(4, 42);
             tabPage_Graphics.Name = "tabPage_Graphics";
@@ -250,6 +257,7 @@ namespace JamboreeCharaTool
             // tabPage_Sound
             // 
             tabPage_Sound.AllowDrop = true;
+            tabPage_Sound.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
             tabPage_Sound.Controls.Add(tlp_Sound);
             tabPage_Sound.Location = new System.Drawing.Point(4, 42);
             tabPage_Sound.Name = "tabPage_Sound";
@@ -274,6 +282,7 @@ namespace JamboreeCharaTool
             // 
             // tabPage_Text
             // 
+            tabPage_Text.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
             tabPage_Text.Controls.Add(tlp_Text);
             tabPage_Text.Location = new System.Drawing.Point(4, 42);
             tabPage_Text.Name = "tabPage_Text";
