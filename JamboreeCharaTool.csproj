@@ -7,7 +7,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MsbtToYaml\src\MsbtToYaml\MsbtToYaml.csproj" />
+    <ProjectReference Include="..\MSBTConverter\MSBTConverter\MSBTConverter.csproj" />
     <ProjectReference Include="..\ShrineFox.IO\ShrineFox.IO.csproj" />
     <ProjectReference Include="..\Switch-Toolbox\File_Format_Library\File_Format_Library.csproj" />
     <ProjectReference Include="..\Switch-Toolbox\Toolbox\Toolbox.csproj" />

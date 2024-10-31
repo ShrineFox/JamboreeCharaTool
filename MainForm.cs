@@ -4,12 +4,17 @@ using System.IO;
 using ShrineFox.IO;
 using MetroSet_UI.Forms;
 using BezelEngineArchive_Lib;
-using MessageStudio.Formats.BinaryText;
+using CLMS;
+using System.Linq;
+using Newtonsoft.Json;
 
 namespace JamboreeCharaTool
 {
     public partial class MainForm : MetroSetForm
     {
+
+        public static Project project = new Project();
+
         public Tuple<string,string>[] languages = new Tuple<string,string>[] { 
             new Tuple<string, string>("deEU","German"),
             new Tuple<string, string>("enEU","English (Europe)"),
@@ -29,8 +34,34 @@ namespace JamboreeCharaTool
 
         public class Project
         {
-            List<CharaData> Characters { get; set; } = new List<CharaData>();
+            public CharaData[] Characters { get; set; } = DefaultCharacters.Copy();
         }
+
+        public static CharaData[] DefaultCharacters =
+        {
+            new CharaData() { ID = 1, Name_enUS = "Mario" },
+            new CharaData() { ID = 2, Name_enUS = "Luigi" },
+            new CharaData() { ID = 3, Name_enUS = "Peach" },
+            new CharaData() { ID = 4, Name_enUS = "Daisy" },
+            new CharaData() { ID = 5, Name_enUS = "Wario" },
+            new CharaData() { ID = 6, Name_enUS = "Waluigi" },
+            new CharaData() { ID = 7, Name_enUS = "Yoshi" },
+            new CharaData() { ID = 8, Name_enUS = "Toadette" },
+            new CharaData() { ID = 9, Name_enUS = "Toad" },
+            new CharaData() { ID = 11, Name_enUS = "Rosalina" },
+            new CharaData() { ID = 12, Name_enUS = "Donkey Kong" },
+            new CharaData() { ID = 13, Name_enUS = "Birdo" },
+            new CharaData() { ID = 14, Name_enUS = "Pauline" },
+            new CharaData() { ID = 50, Name_enUS = "Bowser" },
+            new CharaData() { ID = 51, Name_enUS = "Goomba" },
+            new CharaData() { ID = 52, Name_enUS = "Shy Guy" },
+            new CharaData() { ID = 53, Name_enUS = "Koopa Troopa" },
+            new CharaData() { ID = 54, Name_enUS = "Monty Mole" },
+            new CharaData() { ID = 56, Name_enUS = "Bowser Jr." },
+            new CharaData() { ID = 58, Name_enUS = "Boo" },
+            new CharaData() { ID = 61, Name_enUS = "Spike" },
+            new CharaData() { ID = 62, Name_enUS = "Ninji" }
+        };
 
         public class CharaData
         {
@@ -57,11 +88,6 @@ namespace JamboreeCharaTool
         public MainForm()
         {
             InitializeComponent();
-            CreateDefaultProject();
-        }
-
-        private void CreateDefaultProject()
-        {
         }
 
         private void SetupTheme()
@@ -85,7 +111,7 @@ namespace JamboreeCharaTool
             if (!Directory.Exists(folder))
                 return;
 
-            List<CharaData> importedCharaData = new List<CharaData>();
+            CharaData[] importedCharaData = DefaultCharacters.Copy();
 
             foreach (var file in Directory.GetFiles(folder))
             {
@@ -110,9 +136,37 @@ namespace JamboreeCharaTool
 
                                         // Convert to YAML
                                         var decompressedBytes = new Zstd().Decompress(bytes);
-                                        var msbt = Msbt.FromBinary(decompressedBytes);
-                                        string yaml = msbt.ToYaml();
-                                        File.WriteAllText($"im_common_{language.Item1}.yml", yaml);
+                                        MSBT msbt = new MSBT(decompressedBytes);
+                                        var yamlLines = msbt.ToYaml().Split('\n');
+                                        
+                                        // Get Names
+                                        for (int i = 0; i < yamlLines.Length; i++)
+                                        {
+                                            if (yamlLines[i].StartsWith("  im_pc"))
+                                            {
+                                                int id = Convert.ToInt32(yamlLines[i].Replace("  im_pc","").Split('_')[0]);
+                                                string name = yamlLines[i + 1].Replace("   Contents: ","").Replace("\r","");
+
+                                                switch(language.Item1)
+                                                {
+                                                    case "deEU": importedCharaData.First(x => x.ID == id).Name_deEU = name; break;
+                                                    case "enEU": importedCharaData.First(x => x.ID == id).Name_enEU = name; break;
+                                                    case "enUS": importedCharaData.First(x => x.ID == id).Name_enUS = name; break;
+                                                    case "esUS": importedCharaData.First(x => x.ID == id).Name_esUS = name; break;
+                                                    case "frCA": importedCharaData.First(x => x.ID == id).Name_frCA = name; break;
+                                                    case "frEU": importedCharaData.First(x => x.ID == id).Name_frEU = name; break;
+                                                    case "itEU": importedCharaData.First(x => x.ID == id).Name_itEU = name; break;
+                                                    case "jaJP": importedCharaData.First(x => x.ID == id).Name_jaJP = name; break;
+                                                    case "korKR": importedCharaData.First(x => x.ID == id).Name_korKR = name; break;
+                                                    case "nlEU": importedCharaData.First(x => x.ID == id).Name_nlEU = name; break;
+                                                    case "ptBR": importedCharaData.First(x => x.ID == id).Name_ptBR = name; break;
+                                                    case "ruEU": importedCharaData.First(x => x.ID == id).Name_ruEU = name; break;
+                                                    case "zhCN": importedCharaData.First(x => x.ID == id).Name_zhCN = name; break;
+                                                    case "zhTW": importedCharaData.First(x => x.ID == id).Name_zhTW = name; break;
+                                                    default: break;
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -121,7 +175,24 @@ namespace JamboreeCharaTool
                 }
 
             }
-            
+
+            project.Characters = importedCharaData;
+
+            File.WriteAllText("out.json", JsonConvert.SerializeObject(project, Formatting.Indented));
+
+            // Decide which data to import
+            for (int i = 0; i < project.Characters.Length; i++)
+            {
+                var ogChar = project.Characters[i];
+                foreach (var newChar in importedCharaData.Where(x => x.ID == ogChar.ID))
+                {
+                    if (newChar != ogChar && WinFormsDialogs.ShowMessageBox("Replace Character?", 
+                        $"Replace data for the following character?\n{ogChar.Name_enUS} ==> {newChar.Name_enUS}"))
+                    {
+                        project.Characters[i] = newChar;
+                    }
+                }
+            }
         }
     }
 }
