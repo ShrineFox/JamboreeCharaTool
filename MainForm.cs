@@ -7,87 +7,65 @@ using BezelEngineArchive_Lib;
 using CLMS;
 using System.Linq;
 using Newtonsoft.Json;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace JamboreeCharaTool
 {
     public partial class MainForm : MetroSetForm
     {
-
-        public static Project project = new Project();
-
-        public Tuple<string,string>[] languages = new Tuple<string,string>[] { 
-            new Tuple<string, string>("deEU","German"),
-            new Tuple<string, string>("enEU","English (Europe)"),
-            new Tuple<string, string>("enUS","English (American)"),
-            new Tuple<string, string>("esUS","Spanish (Americas)"),
-            new Tuple<string, string>("frCA","French (Canadian)"),
-            new Tuple<string, string>("frEU","French (Europe)"),
-            new Tuple<string, string>("itEU","Italian"),
-            new Tuple<string, string>("jaJP","Japanese"),
-            new Tuple<string, string>("korKR","Korean"),
-            new Tuple<string, string>("nlEU","Dutch"),
-            new Tuple<string, string>("ptBR","Portuguese"),
-            new Tuple<string, string>("ruEU","Russian"),
-            new Tuple<string, string>("zhCN","Chinese (China)"),
-            new Tuple<string, string>("zhTW","Chinese (Taiwan)")
-        };
-
-        public class Project
-        {
-            public CharaData[] Characters { get; set; } = DefaultCharacters.Copy();
-        }
-
-        public static CharaData[] DefaultCharacters =
-        {
-            new CharaData() { ID = 1, Name_enUS = "Mario" },
-            new CharaData() { ID = 2, Name_enUS = "Luigi" },
-            new CharaData() { ID = 3, Name_enUS = "Peach" },
-            new CharaData() { ID = 4, Name_enUS = "Daisy" },
-            new CharaData() { ID = 5, Name_enUS = "Wario" },
-            new CharaData() { ID = 6, Name_enUS = "Waluigi" },
-            new CharaData() { ID = 7, Name_enUS = "Yoshi" },
-            new CharaData() { ID = 8, Name_enUS = "Toadette" },
-            new CharaData() { ID = 9, Name_enUS = "Toad" },
-            new CharaData() { ID = 11, Name_enUS = "Rosalina" },
-            new CharaData() { ID = 12, Name_enUS = "Donkey Kong" },
-            new CharaData() { ID = 13, Name_enUS = "Birdo" },
-            new CharaData() { ID = 14, Name_enUS = "Pauline" },
-            new CharaData() { ID = 50, Name_enUS = "Bowser" },
-            new CharaData() { ID = 51, Name_enUS = "Goomba" },
-            new CharaData() { ID = 52, Name_enUS = "Shy Guy" },
-            new CharaData() { ID = 53, Name_enUS = "Koopa Troopa" },
-            new CharaData() { ID = 54, Name_enUS = "Monty Mole" },
-            new CharaData() { ID = 56, Name_enUS = "Bowser Jr." },
-            new CharaData() { ID = 58, Name_enUS = "Boo" },
-            new CharaData() { ID = 61, Name_enUS = "Spike" },
-            new CharaData() { ID = 62, Name_enUS = "Ninji" }
-        };
-
-        public class CharaData
-        {
-            public int ID { get; set; } = 0;
-            public string Name_deEU { get; set; } = "Dummy";
-            public string Name_enEU { get; set; } = "Dummy";
-            public string Name_enUS { get; set; } = "Dummy";
-            public string Name_esUS { get; set; } = "Dummy";
-            public string Name_frCA { get; set; } = "Dummy";
-            public string Name_frEU { get; set; } = "Dummy";
-            public string Name_itEU { get; set; } = "Dummy";
-            public string Name_jaJP { get; set; } = "Dummy";
-            public string Name_korKR { get; set; } = "Dummy";
-            public string Name_nlEU { get; set; } = "Dummy";
-            public string Name_ptBR { get; set; } = "Dummy";
-            public string Name_ruEU { get; set; } = "Dummy";
-            public string Name_zhCN { get; set; } = "Dummy";
-            public string Name_zhTW { get; set; } = "Dummy";
-            public string ProfileIcon_Path { get; set; } = "./Dependencies/Default/face_256_pc/face_256_pc01^u.png";
-            public string ProfileIcon_Npc_Path { get; set; } = "./Dependencies/Default/face_256_npc/face_256_npc901^u.png";
-            public string MapIcon_Path { get; set; } = "./Dependencies/Default/face_front128/face_128_pc01^u.png";
-        }
-
         public MainForm()
         {
             InitializeComponent();
+            
+            string defaultProjPath = "./Dependencies/Default/DefaultProject.json";
+            if (File.Exists(defaultProjPath))
+            {
+                project = JsonConvert.DeserializeObject<Project>(File.ReadAllText(defaultProjPath));
+            }
+
+            PopulateForm();
+        }
+
+        private void PopulateForm()
+        {
+            // Overview
+            int column = 0;
+            int row = 0;
+            foreach (var character in project.Characters)
+            {
+                Image profilePic = Image.FromFile(character.ProfileIcon_Path);
+                PictureBox pictureBox = new PictureBox() { Dock = DockStyle.Fill, SizeMode = PictureBoxSizeMode.Zoom };
+                pictureBox.Name = $"pictureBox_pc{character.ID:XX)}";
+                pictureBox.Click += PictureBox_Click;
+                pictureBox.Image = profilePic;
+
+                Label lbl = new Label() { Dock = DockStyle.Fill };
+                lbl.Name = $"lbl_pc{character.ID:XX)}";
+                lbl.Text = character.Name_enUS;
+
+                TableLayoutPanel tlp = new TableLayoutPanel() { Dock = DockStyle.Fill };
+                tlp.Name = $"tlp_pc{character.ID:XX}";
+                tlp.RowCount = 2;
+                tlp.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
+                tlp.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+
+                tlp.Controls.Add(pictureBox, 0, 0);
+                tlp.Controls.Add(lbl, 0, 1);
+                tlp_Overview.Controls.Add(tlp, column, row);
+
+                column++;
+                if (column >= 6)
+                {
+                    column = 0;
+                    row++;
+                }
+            }
+        }
+
+        private void PictureBox_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void SetupTheme()
@@ -111,7 +89,8 @@ namespace JamboreeCharaTool
             if (!Directory.Exists(folder))
                 return;
 
-            CharaData[] importedCharaData = DefaultCharacters.Copy();
+            // Use existing project's character data as a base
+            CharaData[] importedCharaData = project.Characters.Copy();
 
             foreach (var file in Directory.GetFiles(folder))
             {
@@ -175,10 +154,6 @@ namespace JamboreeCharaTool
                 }
 
             }
-
-            project.Characters = importedCharaData;
-
-            File.WriteAllText("out.json", JsonConvert.SerializeObject(project, Formatting.Indented));
 
             // Decide which data to import
             for (int i = 0; i < project.Characters.Length; i++)

@@ -38,9 +38,12 @@ namespace JamboreeCharaTool
             fromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             fromFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toggleThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripComboBox_CharacterSelect = new System.Windows.Forms.ToolStripComboBox();
+            toolStripComboBox_SelectedLanguage = new System.Windows.Forms.ToolStripComboBox();
             splitContainer_Main = new System.Windows.Forms.SplitContainer();
             metroSetTabControl_Main = new MetroSet_UI.Controls.MetroSetTabControl();
             tabPage_Overview = new System.Windows.Forms.TabPage();
+            pnl_Overview = new System.Windows.Forms.Panel();
             tlp_Overview = new System.Windows.Forms.TableLayoutPanel();
             tabPage_Graphics = new System.Windows.Forms.TabPage();
             tlp_Graphics = new System.Windows.Forms.TableLayoutPanel();
@@ -56,6 +59,7 @@ namespace JamboreeCharaTool
             splitContainer_Main.SuspendLayout();
             metroSetTabControl_Main.SuspendLayout();
             tabPage_Overview.SuspendLayout();
+            pnl_Overview.SuspendLayout();
             tabPage_Graphics.SuspendLayout();
             tabPage_Sound.SuspendLayout();
             tabPage_Text.SuspendLayout();
@@ -65,10 +69,10 @@ namespace JamboreeCharaTool
             // 
             menuStrip1.AllowDrop = true;
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, toggleThemeToolStripMenuItem });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, toggleThemeToolStripMenuItem, toolStripComboBox_CharacterSelect, toolStripComboBox_SelectedLanguage });
             menuStrip1.Location = new System.Drawing.Point(2, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new System.Drawing.Size(778, 28);
+            menuStrip1.Size = new System.Drawing.Size(778, 32);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -76,7 +80,7 @@ namespace JamboreeCharaTool
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { loadProjectToolStripMenuItem, saveProjectToolStripMenuItem, importToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            fileToolStripMenuItem.Size = new System.Drawing.Size(46, 28);
             fileToolStripMenuItem.Text = "File";
             // 
             // loadProjectToolStripMenuItem
@@ -114,14 +118,26 @@ namespace JamboreeCharaTool
             // toggleThemeToolStripMenuItem
             // 
             toggleThemeToolStripMenuItem.Name = "toggleThemeToolStripMenuItem";
-            toggleThemeToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
+            toggleThemeToolStripMenuItem.Size = new System.Drawing.Size(118, 28);
             toggleThemeToolStripMenuItem.Text = "Toggle Theme";
+            // 
+            // toolStripComboBox_CharacterSelect
+            // 
+            toolStripComboBox_CharacterSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            toolStripComboBox_CharacterSelect.Name = "toolStripComboBox_CharacterSelect";
+            toolStripComboBox_CharacterSelect.Size = new System.Drawing.Size(121, 28);
+            // 
+            // toolStripComboBox_SelectedLanguage
+            // 
+            toolStripComboBox_SelectedLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            toolStripComboBox_SelectedLanguage.Name = "toolStripComboBox_SelectedLanguage";
+            toolStripComboBox_SelectedLanguage.Size = new System.Drawing.Size(121, 28);
             // 
             // splitContainer_Main
             // 
             splitContainer_Main.AllowDrop = true;
             splitContainer_Main.Dock = System.Windows.Forms.DockStyle.Fill;
-            splitContainer_Main.Location = new System.Drawing.Point(2, 28);
+            splitContainer_Main.Location = new System.Drawing.Point(2, 32);
             splitContainer_Main.Name = "splitContainer_Main";
             splitContainer_Main.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -134,8 +150,8 @@ namespace JamboreeCharaTool
             // 
             splitContainer_Main.Panel2.AllowDrop = true;
             splitContainer_Main.Panel2.Controls.Add(rtb_Log);
-            splitContainer_Main.Size = new System.Drawing.Size(778, 573);
-            splitContainer_Main.SplitterDistance = 508;
+            splitContainer_Main.Size = new System.Drawing.Size(778, 569);
+            splitContainer_Main.SplitterDistance = 504;
             splitContainer_Main.TabIndex = 2;
             // 
             // metroSetTabControl_Main
@@ -155,7 +171,7 @@ namespace JamboreeCharaTool
             metroSetTabControl_Main.Name = "metroSetTabControl_Main";
             metroSetTabControl_Main.SelectedIndex = 0;
             metroSetTabControl_Main.SelectedTextColor = System.Drawing.Color.White;
-            metroSetTabControl_Main.Size = new System.Drawing.Size(778, 508);
+            metroSetTabControl_Main.Size = new System.Drawing.Size(778, 504);
             metroSetTabControl_Main.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             metroSetTabControl_Main.Speed = 100;
             metroSetTabControl_Main.Style = MetroSet_UI.Enums.Style.Dark;
@@ -169,27 +185,42 @@ namespace JamboreeCharaTool
             // 
             // tabPage_Overview
             // 
-            tabPage_Overview.Controls.Add(tlp_Overview);
+            tabPage_Overview.Controls.Add(pnl_Overview);
             tabPage_Overview.Location = new System.Drawing.Point(4, 42);
             tabPage_Overview.Name = "tabPage_Overview";
-            tabPage_Overview.Size = new System.Drawing.Size(770, 462);
+            tabPage_Overview.Size = new System.Drawing.Size(770, 458);
             tabPage_Overview.TabIndex = 3;
             tabPage_Overview.Text = "Overview";
+            // 
+            // pnl_Overview
+            // 
+            pnl_Overview.Controls.Add(tlp_Overview);
+            pnl_Overview.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnl_Overview.Location = new System.Drawing.Point(0, 0);
+            pnl_Overview.Name = "pnl_Overview";
+            pnl_Overview.Size = new System.Drawing.Size(770, 458);
+            pnl_Overview.TabIndex = 0;
             // 
             // tlp_Overview
             // 
             tlp_Overview.AllowDrop = true;
-            tlp_Overview.ColumnCount = 2;
-            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Overview.ColumnCount = 6;
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
             tlp_Overview.Dock = System.Windows.Forms.DockStyle.Fill;
             tlp_Overview.Location = new System.Drawing.Point(0, 0);
             tlp_Overview.Name = "tlp_Overview";
-            tlp_Overview.RowCount = 2;
-            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            tlp_Overview.Size = new System.Drawing.Size(770, 462);
-            tlp_Overview.TabIndex = 4;
+            tlp_Overview.RowCount = 4;
+            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tlp_Overview.Size = new System.Drawing.Size(770, 458);
+            tlp_Overview.TabIndex = 5;
             // 
             // tabPage_Graphics
             // 
@@ -197,7 +228,7 @@ namespace JamboreeCharaTool
             tabPage_Graphics.Controls.Add(tlp_Graphics);
             tabPage_Graphics.Location = new System.Drawing.Point(4, 42);
             tabPage_Graphics.Name = "tabPage_Graphics";
-            tabPage_Graphics.Size = new System.Drawing.Size(770, 462);
+            tabPage_Graphics.Size = new System.Drawing.Size(770, 458);
             tabPage_Graphics.TabIndex = 0;
             tabPage_Graphics.Text = "Graphics";
             // 
@@ -213,7 +244,7 @@ namespace JamboreeCharaTool
             tlp_Graphics.RowCount = 2;
             tlp_Graphics.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
             tlp_Graphics.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            tlp_Graphics.Size = new System.Drawing.Size(770, 462);
+            tlp_Graphics.Size = new System.Drawing.Size(770, 458);
             tlp_Graphics.TabIndex = 3;
             // 
             // tabPage_Sound
@@ -222,7 +253,7 @@ namespace JamboreeCharaTool
             tabPage_Sound.Controls.Add(tlp_Sound);
             tabPage_Sound.Location = new System.Drawing.Point(4, 42);
             tabPage_Sound.Name = "tabPage_Sound";
-            tabPage_Sound.Size = new System.Drawing.Size(770, 462);
+            tabPage_Sound.Size = new System.Drawing.Size(770, 458);
             tabPage_Sound.TabIndex = 1;
             tabPage_Sound.Text = "Sound";
             // 
@@ -238,7 +269,7 @@ namespace JamboreeCharaTool
             tlp_Sound.RowCount = 2;
             tlp_Sound.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
             tlp_Sound.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            tlp_Sound.Size = new System.Drawing.Size(770, 462);
+            tlp_Sound.Size = new System.Drawing.Size(770, 458);
             tlp_Sound.TabIndex = 4;
             // 
             // tabPage_Text
@@ -246,7 +277,7 @@ namespace JamboreeCharaTool
             tabPage_Text.Controls.Add(tlp_Text);
             tabPage_Text.Location = new System.Drawing.Point(4, 42);
             tabPage_Text.Name = "tabPage_Text";
-            tabPage_Text.Size = new System.Drawing.Size(770, 462);
+            tabPage_Text.Size = new System.Drawing.Size(770, 458);
             tabPage_Text.TabIndex = 2;
             tabPage_Text.Text = "Text";
             // 
@@ -261,7 +292,7 @@ namespace JamboreeCharaTool
             tlp_Text.RowCount = 1;
             tlp_Text.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tlp_Text.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tlp_Text.Size = new System.Drawing.Size(770, 462);
+            tlp_Text.Size = new System.Drawing.Size(770, 458);
             tlp_Text.TabIndex = 3;
             // 
             // rtb_Log
@@ -310,6 +341,7 @@ namespace JamboreeCharaTool
             splitContainer_Main.ResumeLayout(false);
             metroSetTabControl_Main.ResumeLayout(false);
             tabPage_Overview.ResumeLayout(false);
+            pnl_Overview.ResumeLayout(false);
             tabPage_Graphics.ResumeLayout(false);
             tabPage_Sound.ResumeLayout(false);
             tabPage_Text.ResumeLayout(false);
@@ -337,6 +369,9 @@ namespace JamboreeCharaTool
         private System.Windows.Forms.ToolStripMenuItem fromFolderToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPage_Overview;
         private System.Windows.Forms.TableLayoutPanel tlp_Sound;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_CharacterSelect;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_SelectedLanguage;
+        private System.Windows.Forms.Panel pnl_Overview;
         private System.Windows.Forms.TableLayoutPanel tlp_Overview;
     }
 }
