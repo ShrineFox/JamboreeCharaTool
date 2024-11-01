@@ -21,10 +21,10 @@ namespace JamboreeCharaTool
         {
             InitializeComponent();
 
-            string defaultProjPath = "./Dependencies/Default/DefaultProject.json";
-            if (File.Exists(defaultProjPath))
+            projectPath = "./Dependencies/Default/DefaultProject.json";
+            if (File.Exists(projectPath))
             {
-                project = JsonConvert.DeserializeObject<Project>(File.ReadAllText(defaultProjPath));
+                project = JsonConvert.DeserializeObject<Project>(File.ReadAllText(projectPath));
             }
 
             toolStripComboBox_Character.SelectedIndex = 0;
@@ -40,7 +40,7 @@ namespace JamboreeCharaTool
             int row = 0;
             foreach (var character in project.Characters)
             {
-                Image profilePic = Image.FromFile(character.ProfileIcon_Path);
+                Image profilePic = Image.FromFile(Path.Combine(Path.GetDirectoryName(projectPath), character.ProfileIcon_Path));
                 PictureBox pictureBox = new PictureBox() { Dock = DockStyle.Fill, SizeMode = PictureBoxSizeMode.Zoom };
                 pictureBox.Name = $"pictureBox_pc{character.ID.ToString("00")}";
                 pictureBox.Click += PictureBox_Click;

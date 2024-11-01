@@ -16,9 +16,10 @@
       "Name_ruEU": " Марио",
       "Name_zhCN": " 马力欧",
       "Name_zhTW": " 瑪利歐",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc01^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc901^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc01^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc01^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc901^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc01^u.png",
+      "PlayerModel_Path": "./model/chara~pc01.nx.bea"
     },
     {
       "ID": 2,
@@ -36,9 +37,10 @@
       "Name_ruEU": " Луиджи",
       "Name_zhCN": " 路易吉",
       "Name_zhTW": " 路易吉",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc02^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc902^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc02^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc02^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc902^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc02^u.png",
+      "PlayerModel_Path": "./model/chara~pc02.nx.bea"
     },
     {
       "ID": 3,
@@ -56,9 +58,10 @@
       "Name_ruEU": " Пич",
       "Name_zhCN": " 碧姬",
       "Name_zhTW": " 碧姬",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc03^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc903^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc03^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc03^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc903^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc03^u.png",
+      "PlayerModel_Path": "./model/chara~pc03.nx.bea"
     },
     {
       "ID": 4,
@@ -76,9 +79,10 @@
       "Name_ruEU": " Дейзи",
       "Name_zhCN": " 黛西",
       "Name_zhTW": " 黛西",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc04^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc904^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc04^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc04^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc904^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc04^u.png",
+      "PlayerModel_Path": "./model/chara~pc04.nx.bea"
     },
     {
       "ID": 5,
@@ -96,9 +100,10 @@
       "Name_ruEU": " Варио",
       "Name_zhCN": " 瓦力欧",
       "Name_zhTW": " 瓦利歐",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc05^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc905^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc05^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc05^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc905^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc05^u.png",
+      "PlayerModel_Path": "./model/chara~pc05.nx.bea"
     },
     {
       "ID": 6,
@@ -116,9 +121,10 @@
       "Name_ruEU": " Валуиджи",
       "Name_zhCN": " 瓦路易吉",
       "Name_zhTW": " 瓦路易吉",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc06^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc906^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc06^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc06^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc906^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc06^u.png",
+      "PlayerModel_Path": "./model/chara~pc06.nx.bea"
     },
     {
       "ID": 7,
@@ -136,9 +142,10 @@
       "Name_ruEU": " Йоши",
       "Name_zhCN": " 耀西",
       "Name_zhTW": " 耀西",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc07^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc907^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc07^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc07^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc907^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc07^u.png",
+      "PlayerModel_Path": "./model/chara~pc07.nx.bea"
     },
     {
       "ID": 8,
@@ -156,9 +163,10 @@
       "Name_ruEU": " Тоадетта",
       "Name_zhCN": " 奇诺比珂",
       "Name_zhTW": " 奇諾比珂",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc08^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc908^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc08^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc08^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc908^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc08^u.png",
+      "PlayerModel_Path": "./model/chara~pc08.nx.bea"
     },
     {
       "ID": 9,
@@ -176,9 +184,10 @@
       "Name_ruEU": " Тоад",
       "Name_zhCN": " 奇诺比奥",
       "Name_zhTW": " 奇諾比奧",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc09^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc909^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc09^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc09^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc909^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc09^u.png",
+      "PlayerModel_Path": "./model/chara~pc09.nx.bea"
     },
     {
       "ID": 11,
@@ -196,9 +205,10 @@
       "Name_ruEU": " Розалина",
       "Name_zhCN": " 罗莎塔",
       "Name_zhTW": " 羅潔塔",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc11^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc911^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc11^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc11^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc911^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc11^u.png",
+      "PlayerModel_Path": "./model/chara~pc11.nx.bea"
     },
     {
       "ID": 12,
@@ -216,9 +226,10 @@
       "Name_ruEU": " Донки Конг",
       "Name_zhCN": " 咚奇刚",
       "Name_zhTW": " 咚奇剛",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc12^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc912^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc12^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc12^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc912^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc12^u.png",
+      "PlayerModel_Path": "./model/chara~pc12.nx.bea"
     },
     {
       "ID": 13,
@@ -236,9 +247,10 @@
       "Name_ruEU": " Бирдо",
       "Name_zhCN": " 凯瑟琳",
       "Name_zhTW": " 凱瑟琳",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc13^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc913^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc13^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc13^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc913^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc13^u.png",
+      "PlayerModel_Path": "./model/chara~pc13.nx.bea"
     },
     {
       "ID": 14,
@@ -256,9 +268,10 @@
       "Name_ruEU": " Полина",
       "Name_zhCN": " 宝琳",
       "Name_zhTW": " 波琳",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc14^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc914^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc14^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc14^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc914^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc14^u.png",
+      "PlayerModel_Path": "./model/chara~pc13.nx.bea"
     },
     {
       "ID": 50,
@@ -276,9 +289,10 @@
       "Name_ruEU": " Боузер",
       "Name_zhCN": " 酷霸",
       "Name_zhTW": " 庫巴",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc50^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc950^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc50^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc50^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc950^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc50^u.png",
+      "PlayerModel_Path": "./model/chara~pc50.nx.bea"
     },
     {
       "ID": 51,
@@ -296,9 +310,10 @@
       "Name_ruEU": " Гумба",
       "Name_zhCN": " 栗宝宝",
       "Name_zhTW": " 栗寶寶",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc51^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc951^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc51^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc51^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc951^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc51^u.png",
+      "PlayerModel_Path": "./model/chara~pc51.nx.bea"
     },
     {
       "ID": 52,
@@ -316,9 +331,10 @@
       "Name_ruEU": " Скромняга",
       "Name_zhCN": " 嘿呵",
       "Name_zhTW": " 嘿呵",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc52^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc952^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc52^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc52^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc952^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc52^u.png",
+      "PlayerModel_Path": "./model/chara~pc52.nx.bea"
     },
     {
       "ID": 53,
@@ -336,9 +352,10 @@
       "Name_ruEU": " Купа-трупа",
       "Name_zhCN": " 慢慢龟",
       "Name_zhTW": " 慢慢龜",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc53^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc953^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc53^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc53^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc953^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc53^u.png",
+      "PlayerModel_Path": "./model/chara~pc53.nx.bea"
     },
     {
       "ID": 54,
@@ -356,9 +373,10 @@
       "Name_ruEU": " крот Монти",
       "Name_zhCN": " 黄鼹鼠",
       "Name_zhTW": " 黃鼴鼠",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc54^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc954^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc54^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc54^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc954^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc54^u.png",
+      "PlayerModel_Path": "./model/chara~pc54.nx.bea"
     },
     {
       "ID": 56,
@@ -376,9 +394,10 @@
       "Name_ruEU": " Боузер-младший",
       "Name_zhCN": " 酷霸Jr.",
       "Name_zhTW": " 庫巴Jr.",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc56^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc956^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc56^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc56^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc956^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc56^u.png",
+      "PlayerModel_Path": "./model/chara~pc56.nx.bea"
     },
     {
       "ID": 58,
@@ -396,9 +415,10 @@
       "Name_ruEU": " Бу",
       "Name_zhCN": " 害羞幽灵",
       "Name_zhTW": " 害羞幽靈",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc58^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc958^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc58^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc58^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc958^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc58^u.png",
+      "PlayerModel_Path": "./model/chara~pc58.nx.bea"
     },
     {
       "ID": 61,
@@ -416,9 +436,10 @@
       "Name_ruEU": " Спайк",
       "Name_zhCN": " 加邦",
       "Name_zhTW": " 加邦",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc61^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc961^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc61^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc61^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc961^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc61^u.png",
+      "PlayerModel_Path": "./model/chara~pc61.nx.bea"
     },
     {
       "ID": 62,
@@ -436,9 +457,10 @@
       "Name_ruEU": " Ниндзик",
       "Name_zhCN": " 哈库",
       "Name_zhTW": " 哈庫",
-      "ProfileIcon_Path": "./Dependencies/Default/face_256_pc/face_256_pc62^u.png",
-      "ProfileIcon_Npc_Path": "./Dependencies/Default/face_256_npc/face_256_npc962^u.png",
-      "MapIcon_Path": "./Dependencies/Default/face_front128/face_128_pc62^u.png"
+      "ProfileIcon_Path": "./face_256_pc/face_256_pc62^u.png",
+      "ProfileIcon_Npc_Path": "./face_256_npc/face_256_npc962^u.png",
+      "MapIcon_Path": "./face_front128/face_128_pc62^u.png",
+      "PlayerModel_Path": "./model/chara~pc62.nx.bea"
     }
   ]
 }

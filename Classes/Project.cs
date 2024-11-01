@@ -14,6 +14,7 @@ namespace JamboreeCharaTool
     public partial class MainForm : MetroSetForm
     {
         public static Project project = new Project();
+        public static string projectPath = "";
 
         public Tuple<string, string>[] languages = new Tuple<string, string>[] {
             new Tuple<string, string>("deEU","German"),
@@ -54,9 +55,11 @@ namespace JamboreeCharaTool
             public string Name_ruEU { get; set; } = "Dummy";
             public string Name_zhCN { get; set; } = "Dummy";
             public string Name_zhTW { get; set; } = "Dummy";
-            public string ProfileIcon_Path { get; set; } = "./Dependencies/Default/face_256_pc/face_256_pc01^u.png";
-            public string ProfileIcon_Npc_Path { get; set; } = "./Dependencies/Default/face_256_npc/face_256_npc901^u.png";
-            public string MapIcon_Path { get; set; } = "./Dependencies/Default/face_front128/face_128_pc01^u.png";
+            public string ProfileIcon_Path { get; set; } = "./face_256_pc/face_256_pc01^u.png";
+            public string ProfileIcon_Npc_Path { get; set; } = "./face_256_npc/face_256_npc901^u.png";
+            public string MapIcon_Path { get; set; } = "./face_front128/face_128_pc01^u.png";
+            public string PlayerModel_Path { get; set; } = "./model/chara~pc01.nx.bea";
+
         }
 
         private void SaveProject()
@@ -72,8 +75,9 @@ namespace JamboreeCharaTool
                 outPath += ".json";
 
             // Save to .json file
-            File.WriteAllText(outPaths[0], JsonConvert.SerializeObject(project, Formatting.Indented));
-            MessageBox.Show($"Saved project file to:\n{outPaths[0]}", "Project Saved");
+            projectPath = outPath;
+            File.WriteAllText(outPath, JsonConvert.SerializeObject(project, Formatting.Indented));
+            MessageBox.Show($"Saved project file to:\n{outPath}", "Project Saved");
         }
     }
 }
