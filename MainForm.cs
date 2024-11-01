@@ -27,8 +27,8 @@ namespace JamboreeCharaTool
                 project = JsonConvert.DeserializeObject<Project>(File.ReadAllText(defaultProjPath));
             }
 
-            toolStripComboBox_CharacterSelect.SelectedIndex = 0;
-            toolStripComboBox_SelectedLanguage.SelectedIndex = 0;
+            toolStripComboBox_Character.SelectedIndex = 0;
+            toolStripComboBox_Language.SelectedIndex = 2;
 
             PopulateForm();
         }
@@ -55,6 +55,8 @@ namespace JamboreeCharaTool
                 tlp.RowCount = 2;
                 tlp.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
                 tlp.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+                if (character.ID == 01)
+                    tlp.BackColor = Color.DarkBlue;
 
                 tlp.Controls.Add(pictureBox, 0, 0);
                 tlp.Controls.Add(lbl, 0, 1);
@@ -74,7 +76,7 @@ namespace JamboreeCharaTool
             var pictureBox = (PictureBox)sender;
 
             var characterID = Convert.ToInt32(pictureBox.Name.Replace("pictureBox_pc",""));
-            toolStripComboBox_CharacterSelect.SelectedIndex = Array.IndexOf(project.Characters, project.Characters.First(x => x.ID == characterID)) + 1;
+            toolStripComboBox_Character.SelectedIndex = Array.IndexOf(project.Characters, project.Characters.First(x => x.ID == characterID));
         }
 
         private void SetupTheme()
@@ -180,14 +182,13 @@ namespace JamboreeCharaTool
 
         private void SelectedCharacter_Changed(object sender, EventArgs e)
         {
-            int index = toolStripComboBox_CharacterSelect.SelectedIndex;
-            if (index > 0)
-            {
-                selectedCharacter = project.Characters[index - 1];
+            int index = toolStripComboBox_Character.SelectedIndex;
 
-                UpdateTextTab();
-                UpdateOverviewTab();
-            }
+            selectedCharacter = project.Characters[index];
+
+            UpdateTextTab();
+            UpdateOverviewTab();
+            
         }
 
         private void UpdateTextTab()
@@ -200,10 +201,10 @@ namespace JamboreeCharaTool
 
         private void SelectedLanguage_Changed(object sender, EventArgs e)
         {
-            int index = toolStripComboBox_SelectedLanguage.SelectedIndex;
+            int index = toolStripComboBox_Language.SelectedIndex;
             if (index > 0)
             {
-                selectedLanguage = languages[index - 1].Item1;
+                selectedLanguage = languages[index].Item1;
 
                 UpdateOverviewTab();
             }
@@ -219,7 +220,7 @@ namespace JamboreeCharaTool
                     // Update character name in Overview tab
                     label.Text = project.Characters[charIndex].GetType().GetProperty($"Name_{selectedLanguage}").GetValue(project.Characters[charIndex]).ToString();
                     // Highlight background of selected character profile pic
-                    if (charIndex == toolStripComboBox_CharacterSelect.SelectedIndex - 1)
+                    if (charIndex == toolStripComboBox_Character.SelectedIndex)
                         tlp.BackColor = Color.DarkBlue;
                     else
                         tlp.BackColor = Color.Transparent;
@@ -239,6 +240,9 @@ namespace JamboreeCharaTool
         {
             if (!txt_Name.Enabled)
                 return;
+
+            selectedCharacter.GetType().GetProperty($"Name_{selectedLanguage}").SetValue(selectedCharacter, txt_Name.Text);
+            UpdateOverviewTab();
         }
     }
 }

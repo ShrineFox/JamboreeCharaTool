@@ -38,10 +38,16 @@ namespace JamboreeCharaTool
             fromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             fromFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toggleThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripComboBox_CharacterSelect = new System.Windows.Forms.ToolStripComboBox();
-            toolStripComboBox_SelectedLanguage = new System.Windows.Forms.ToolStripComboBox();
+            characterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripComboBox_Character = new System.Windows.Forms.ToolStripComboBox();
+            languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripComboBox_Language = new System.Windows.Forms.ToolStripComboBox();
             splitContainer_Main = new System.Windows.Forms.SplitContainer();
             metroSetTabControl_Main = new MetroSet_UI.Controls.MetroSetTabControl();
+            tabPage_Text = new System.Windows.Forms.TabPage();
+            tlp_Text = new System.Windows.Forms.TableLayoutPanel();
+            lbl_Name = new System.Windows.Forms.Label();
+            txt_Name = new System.Windows.Forms.TextBox();
             tabPage_Overview = new System.Windows.Forms.TabPage();
             pnl_Overview = new System.Windows.Forms.Panel();
             tlp_Overview = new System.Windows.Forms.TableLayoutPanel();
@@ -49,30 +55,26 @@ namespace JamboreeCharaTool
             tlp_Graphics = new System.Windows.Forms.TableLayoutPanel();
             tabPage_Sound = new System.Windows.Forms.TabPage();
             tlp_Sound = new System.Windows.Forms.TableLayoutPanel();
-            tabPage_Text = new System.Windows.Forms.TabPage();
-            tlp_Text = new System.Windows.Forms.TableLayoutPanel();
             rtb_Log = new System.Windows.Forms.RichTextBox();
-            lbl_Name = new System.Windows.Forms.Label();
-            txt_Name = new System.Windows.Forms.TextBox();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer_Main).BeginInit();
             splitContainer_Main.Panel1.SuspendLayout();
             splitContainer_Main.Panel2.SuspendLayout();
             splitContainer_Main.SuspendLayout();
             metroSetTabControl_Main.SuspendLayout();
+            tabPage_Text.SuspendLayout();
+            tlp_Text.SuspendLayout();
             tabPage_Overview.SuspendLayout();
             pnl_Overview.SuspendLayout();
             tabPage_Graphics.SuspendLayout();
             tabPage_Sound.SuspendLayout();
-            tabPage_Text.SuspendLayout();
-            tlp_Text.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.AllowDrop = true;
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, toggleThemeToolStripMenuItem, toolStripComboBox_CharacterSelect, toolStripComboBox_SelectedLanguage });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, toggleThemeToolStripMenuItem, characterToolStripMenuItem, toolStripComboBox_Character, languageToolStripMenuItem, toolStripComboBox_Language });
             menuStrip1.Location = new System.Drawing.Point(2, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new System.Drawing.Size(778, 32);
@@ -89,13 +91,13 @@ namespace JamboreeCharaTool
             // loadProjectToolStripMenuItem
             // 
             loadProjectToolStripMenuItem.Name = "loadProjectToolStripMenuItem";
-            loadProjectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            loadProjectToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             loadProjectToolStripMenuItem.Text = "Load Project";
             // 
             // saveProjectToolStripMenuItem
             // 
             saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
-            saveProjectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            saveProjectToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             saveProjectToolStripMenuItem.Text = "Save Project";
             saveProjectToolStripMenuItem.Click += SaveProject_Click;
             // 
@@ -103,7 +105,7 @@ namespace JamboreeCharaTool
             // 
             importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { fromFileToolStripMenuItem, fromFolderToolStripMenuItem });
             importToolStripMenuItem.Name = "importToolStripMenuItem";
-            importToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            importToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             importToolStripMenuItem.Text = "Import...";
             // 
             // fromFileToolStripMenuItem
@@ -125,21 +127,35 @@ namespace JamboreeCharaTool
             toggleThemeToolStripMenuItem.Size = new System.Drawing.Size(118, 28);
             toggleThemeToolStripMenuItem.Text = "Toggle Theme";
             // 
-            // toolStripComboBox_CharacterSelect
+            // characterToolStripMenuItem
             // 
-            toolStripComboBox_CharacterSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            toolStripComboBox_CharacterSelect.Items.AddRange(new object[] { "--Select Character--", "Mario", "Luigi", "Peach", "Daisy", "Wario", "Waluigi", "Yoshi", "Toadette", "Toad", "Rosalina", "Donkey Kong", "Birdo", "Pauline", "Bowser", "Goomba", "Shy Guy", "Koopa Troopa", "Monty Mole", "Bowser Jr.", "Boo", "Spike", "Ninji" });
-            toolStripComboBox_CharacterSelect.Name = "toolStripComboBox_CharacterSelect";
-            toolStripComboBox_CharacterSelect.Size = new System.Drawing.Size(191, 28);
-            toolStripComboBox_CharacterSelect.SelectedIndexChanged += SelectedCharacter_Changed;
+            characterToolStripMenuItem.Enabled = false;
+            characterToolStripMenuItem.Name = "characterToolStripMenuItem";
+            characterToolStripMenuItem.Size = new System.Drawing.Size(89, 28);
+            characterToolStripMenuItem.Text = "Character:";
             // 
-            // toolStripComboBox_SelectedLanguage
+            // toolStripComboBox_Character
             // 
-            toolStripComboBox_SelectedLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            toolStripComboBox_SelectedLanguage.Items.AddRange(new object[] { "--Select Language--", "German (Europe)", "English (Europe)", "English (North America)", "Spanish (North America)", "French (Canada)", "French (Europe)", "Italian (Europe)", "Japanese (Japan)", "Korean (South Korea)", "Dutch (Netherlands)", "Portuguese (Brazil)", "Russian (Europe)", "Chinese (China)", "Chinese (Taiwan)" });
-            toolStripComboBox_SelectedLanguage.Name = "toolStripComboBox_SelectedLanguage";
-            toolStripComboBox_SelectedLanguage.Size = new System.Drawing.Size(161, 28);
-            toolStripComboBox_SelectedLanguage.SelectedIndexChanged += SelectedLanguage_Changed;
+            toolStripComboBox_Character.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            toolStripComboBox_Character.Items.AddRange(new object[] { "Mario", "Luigi", "Peach", "Daisy", "Wario", "Waluigi", "Yoshi", "Toadette", "Toad", "Rosalina", "Donkey Kong", "Birdo", "Pauline", "Bowser", "Goomba", "Shy Guy", "Koopa Troopa", "Monty Mole", "Bowser Jr.", "Boo", "Spike", "Ninji" });
+            toolStripComboBox_Character.Name = "toolStripComboBox_Character";
+            toolStripComboBox_Character.Size = new System.Drawing.Size(151, 28);
+            toolStripComboBox_Character.SelectedIndexChanged += SelectedCharacter_Changed;
+            // 
+            // languageToolStripMenuItem
+            // 
+            languageToolStripMenuItem.Enabled = false;
+            languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            languageToolStripMenuItem.Size = new System.Drawing.Size(91, 28);
+            languageToolStripMenuItem.Text = "Language:";
+            // 
+            // toolStripComboBox_Language
+            // 
+            toolStripComboBox_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            toolStripComboBox_Language.Items.AddRange(new object[] { "German (Europe)", "English (Europe)", "English (North America)", "Spanish (North America)", "French (Canada)", "French (Europe)", "Italian (Europe)", "Japanese (Japan)", "Korean (South Korea)", "Dutch (Netherlands)", "Portuguese (Brazil)", "Russian (Europe)", "Chinese (China)", "Chinese (Taiwan)" });
+            toolStripComboBox_Language.Name = "toolStripComboBox_Language";
+            toolStripComboBox_Language.Size = new System.Drawing.Size(191, 28);
+            toolStripComboBox_Language.SelectedIndexChanged += SelectedLanguage_Changed;
             // 
             // splitContainer_Main
             // 
@@ -190,6 +206,51 @@ namespace JamboreeCharaTool
             metroSetTabControl_Main.ThemeName = "MetroDark";
             metroSetTabControl_Main.UnselectedTextColor = System.Drawing.Color.Gray;
             metroSetTabControl_Main.UseAnimation = false;
+            // 
+            // tabPage_Text
+            // 
+            tabPage_Text.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            tabPage_Text.Controls.Add(tlp_Text);
+            tabPage_Text.Location = new System.Drawing.Point(4, 42);
+            tabPage_Text.Name = "tabPage_Text";
+            tabPage_Text.Size = new System.Drawing.Size(770, 458);
+            tabPage_Text.TabIndex = 2;
+            tabPage_Text.Text = "Text";
+            // 
+            // tlp_Text
+            // 
+            tlp_Text.ColumnCount = 2;
+            tlp_Text.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Text.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Text.Controls.Add(lbl_Name, 0, 0);
+            tlp_Text.Controls.Add(txt_Name, 1, 0);
+            tlp_Text.Dock = System.Windows.Forms.DockStyle.Fill;
+            tlp_Text.Location = new System.Drawing.Point(0, 0);
+            tlp_Text.Name = "tlp_Text";
+            tlp_Text.RowCount = 1;
+            tlp_Text.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Text.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Text.Size = new System.Drawing.Size(770, 458);
+            tlp_Text.TabIndex = 3;
+            // 
+            // lbl_Name
+            // 
+            lbl_Name.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            lbl_Name.AutoSize = true;
+            lbl_Name.Location = new System.Drawing.Point(204, 216);
+            lbl_Name.Name = "lbl_Name";
+            lbl_Name.Size = new System.Drawing.Size(178, 26);
+            lbl_Name.TabIndex = 0;
+            lbl_Name.Text = "Character Name:";
+            // 
+            // txt_Name
+            // 
+            txt_Name.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            txt_Name.Location = new System.Drawing.Point(388, 213);
+            txt_Name.Name = "txt_Name";
+            txt_Name.Size = new System.Drawing.Size(287, 32);
+            txt_Name.TabIndex = 1;
+            txt_Name.TextChanged += Name_Changed;
             // 
             // tabPage_Overview
             // 
@@ -283,32 +344,6 @@ namespace JamboreeCharaTool
             tlp_Sound.Size = new System.Drawing.Size(770, 458);
             tlp_Sound.TabIndex = 4;
             // 
-            // tabPage_Text
-            // 
-            tabPage_Text.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
-            tabPage_Text.Controls.Add(tlp_Text);
-            tabPage_Text.Location = new System.Drawing.Point(4, 42);
-            tabPage_Text.Name = "tabPage_Text";
-            tabPage_Text.Size = new System.Drawing.Size(770, 458);
-            tabPage_Text.TabIndex = 2;
-            tabPage_Text.Text = "Text";
-            // 
-            // tlp_Text
-            // 
-            tlp_Text.ColumnCount = 2;
-            tlp_Text.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tlp_Text.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tlp_Text.Controls.Add(lbl_Name, 0, 0);
-            tlp_Text.Controls.Add(txt_Name, 1, 0);
-            tlp_Text.Dock = System.Windows.Forms.DockStyle.Fill;
-            tlp_Text.Location = new System.Drawing.Point(0, 0);
-            tlp_Text.Name = "tlp_Text";
-            tlp_Text.RowCount = 1;
-            tlp_Text.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tlp_Text.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tlp_Text.Size = new System.Drawing.Size(770, 458);
-            tlp_Text.TabIndex = 3;
-            // 
             // rtb_Log
             // 
             rtb_Log.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
@@ -322,25 +357,6 @@ namespace JamboreeCharaTool
             rtb_Log.Size = new System.Drawing.Size(778, 61);
             rtb_Log.TabIndex = 0;
             rtb_Log.Text = "";
-            // 
-            // lbl_Name
-            // 
-            lbl_Name.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            lbl_Name.AutoSize = true;
-            lbl_Name.Location = new System.Drawing.Point(204, 216);
-            lbl_Name.Name = "lbl_Name";
-            lbl_Name.Size = new System.Drawing.Size(178, 26);
-            lbl_Name.TabIndex = 0;
-            lbl_Name.Text = "Character Name:";
-            // 
-            // txt_Name
-            // 
-            txt_Name.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            txt_Name.Location = new System.Drawing.Point(388, 213);
-            txt_Name.Name = "txt_Name";
-            txt_Name.Size = new System.Drawing.Size(287, 32);
-            txt_Name.TabIndex = 1;
-            txt_Name.TextChanged += Name_Changed;
             // 
             // MainForm
             // 
@@ -373,13 +389,13 @@ namespace JamboreeCharaTool
             ((System.ComponentModel.ISupportInitialize)splitContainer_Main).EndInit();
             splitContainer_Main.ResumeLayout(false);
             metroSetTabControl_Main.ResumeLayout(false);
+            tabPage_Text.ResumeLayout(false);
+            tlp_Text.ResumeLayout(false);
+            tlp_Text.PerformLayout();
             tabPage_Overview.ResumeLayout(false);
             pnl_Overview.ResumeLayout(false);
             tabPage_Graphics.ResumeLayout(false);
             tabPage_Sound.ResumeLayout(false);
-            tabPage_Text.ResumeLayout(false);
-            tlp_Text.ResumeLayout(false);
-            tlp_Text.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -404,11 +420,13 @@ namespace JamboreeCharaTool
         private System.Windows.Forms.ToolStripMenuItem fromFolderToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPage_Overview;
         private System.Windows.Forms.TableLayoutPanel tlp_Sound;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_CharacterSelect;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_SelectedLanguage;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_Character;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_Language;
         private System.Windows.Forms.Panel pnl_Overview;
         private System.Windows.Forms.TableLayoutPanel tlp_Overview;
         private System.Windows.Forms.Label lbl_Name;
         private System.Windows.Forms.TextBox txt_Name;
+        private System.Windows.Forms.ToolStripMenuItem characterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
     }
 }
