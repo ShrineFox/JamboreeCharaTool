@@ -15,6 +15,8 @@ namespace JamboreeCharaTool
     public partial class MainForm : MetroSetForm
     {
         string selectedLanguage = "enUS";
+        CharaData selectedCharacter;
+
         public MainForm()
         {
             InitializeComponent();
@@ -40,16 +42,16 @@ namespace JamboreeCharaTool
             {
                 Image profilePic = Image.FromFile(character.ProfileIcon_Path);
                 PictureBox pictureBox = new PictureBox() { Dock = DockStyle.Fill, SizeMode = PictureBoxSizeMode.Zoom };
-                pictureBox.Name = $"pictureBox_pc{character.ID:XX)}";
+                pictureBox.Name = $"pictureBox_pc{character.ID.ToString("00")}";
                 pictureBox.Click += PictureBox_Click;
                 pictureBox.Image = profilePic;
 
                 Label lbl = new Label() { Dock = DockStyle.Fill };
-                lbl.Name = $"lbl_pc{character.ID:XX)}";
+                lbl.Name = $"lbl_pc{character.ID.ToString("00")}";
                 lbl.Text = character.Name_enUS;
 
                 TableLayoutPanel tlp = new TableLayoutPanel() { Dock = DockStyle.Fill };
-                tlp.Name = $"tlp_pc{character.ID:XX}";
+                tlp.Name = $"tlp_pc{character.ID.ToString("00")}";
                 tlp.RowCount = 2;
                 tlp.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
                 tlp.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
@@ -69,7 +71,10 @@ namespace JamboreeCharaTool
 
         private void PictureBox_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var pictureBox = (PictureBox)sender;
+
+            var characterID = Convert.ToInt32(pictureBox.Name.Replace("pictureBox_pc",""));
+            toolStripComboBox_CharacterSelect.SelectedIndex = Array.IndexOf(project.Characters, project.Characters.First(x => x.ID == characterID)) + 1;
         }
 
         private void SetupTheme()
@@ -156,7 +161,6 @@ namespace JamboreeCharaTool
                         }
                     }
                 }
-
             }
 
             // Decide which data to import
@@ -179,10 +183,19 @@ namespace JamboreeCharaTool
             int index = toolStripComboBox_CharacterSelect.SelectedIndex;
             if (index > 0)
             {
-                var selectedCharacter = project.Characters[index - 1];
+                selectedCharacter = project.Characters[index - 1];
 
-                // TODO: Update fields in other tabs
+                UpdateTextTab();
+                UpdateOverviewTab();
             }
+        }
+
+        private void UpdateTextTab()
+        {
+            // Update character name in Text tab
+            txt_Name.Enabled = false;
+            txt_Name.Text = selectedCharacter.GetType().GetProperty($"Name_{selectedLanguage}").GetValue(selectedCharacter).ToString();
+            txt_Name.Enabled = true;
         }
 
         private void SelectedLanguage_Changed(object sender, EventArgs e)
@@ -192,19 +205,40 @@ namespace JamboreeCharaTool
             {
                 selectedLanguage = languages[index - 1].Item1;
 
-                // Overview
-                int charIndex = 0;
-                foreach (var label in tlp_Overview.GetAllControls<Label>())
-                {
-                    label.Text = project.Characters[charIndex].GetType().GetProperty($"Name_{selectedLanguage}").GetValue(project.Characters[charIndex]).ToString();
-                    charIndex++;
-                }
+                UpdateOverviewTab();
             }
+        }
+
+        private void UpdateOverviewTab()
+        {
+            int charIndex = 0;
+            foreach (var tlp in tlp_Overview.GetAllControls<TableLayoutPanel>())
+            {
+                foreach (var label in tlp.GetAllControls<Label>())
+                {
+                    // Update character name in Overview tab
+                    label.Text = project.Characters[charIndex].GetType().GetProperty($"Name_{selectedLanguage}").GetValue(project.Characters[charIndex]).ToString();
+                    // Highlight background of selected character profile pic
+                    if (charIndex == toolStripComboBox_CharacterSelect.SelectedIndex - 1)
+                        tlp.BackColor = Color.DarkBlue;
+                    else
+                        tlp.BackColor = Color.Transparent;
+                }
+
+                charIndex++;
+            }
+            
         }
 
         private void SaveProject_Click(object sender, EventArgs e)
         {
             SaveProject();
+        }
+
+        private void Name_Changed(object sender, EventArgs e)
+        {
+            if (!txt_Name.Enabled)
+                return;
         }
     }
 }

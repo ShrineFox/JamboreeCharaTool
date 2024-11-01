@@ -52,6 +52,8 @@ namespace JamboreeCharaTool
             tabPage_Text = new System.Windows.Forms.TabPage();
             tlp_Text = new System.Windows.Forms.TableLayoutPanel();
             rtb_Log = new System.Windows.Forms.RichTextBox();
+            lbl_Name = new System.Windows.Forms.Label();
+            txt_Name = new System.Windows.Forms.TextBox();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer_Main).BeginInit();
             splitContainer_Main.Panel1.SuspendLayout();
@@ -63,6 +65,7 @@ namespace JamboreeCharaTool
             tabPage_Graphics.SuspendLayout();
             tabPage_Sound.SuspendLayout();
             tabPage_Text.SuspendLayout();
+            tlp_Text.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -165,10 +168,10 @@ namespace JamboreeCharaTool
             metroSetTabControl_Main.AnimateEasingType = MetroSet_UI.Enums.EasingType.CubeOut;
             metroSetTabControl_Main.AnimateTime = 200;
             metroSetTabControl_Main.BackgroundColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            metroSetTabControl_Main.Controls.Add(tabPage_Text);
             metroSetTabControl_Main.Controls.Add(tabPage_Overview);
             metroSetTabControl_Main.Controls.Add(tabPage_Graphics);
             metroSetTabControl_Main.Controls.Add(tabPage_Sound);
-            metroSetTabControl_Main.Controls.Add(tabPage_Text);
             metroSetTabControl_Main.Dock = System.Windows.Forms.DockStyle.Fill;
             metroSetTabControl_Main.IsDerivedStyle = true;
             metroSetTabControl_Main.ItemSize = new System.Drawing.Size(100, 38);
@@ -295,6 +298,8 @@ namespace JamboreeCharaTool
             tlp_Text.ColumnCount = 2;
             tlp_Text.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tlp_Text.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Text.Controls.Add(lbl_Name, 0, 0);
+            tlp_Text.Controls.Add(txt_Name, 1, 0);
             tlp_Text.Dock = System.Windows.Forms.DockStyle.Fill;
             tlp_Text.Location = new System.Drawing.Point(0, 0);
             tlp_Text.Name = "tlp_Text";
@@ -317,6 +322,25 @@ namespace JamboreeCharaTool
             rtb_Log.Size = new System.Drawing.Size(778, 61);
             rtb_Log.TabIndex = 0;
             rtb_Log.Text = "";
+            // 
+            // lbl_Name
+            // 
+            lbl_Name.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            lbl_Name.AutoSize = true;
+            lbl_Name.Location = new System.Drawing.Point(204, 216);
+            lbl_Name.Name = "lbl_Name";
+            lbl_Name.Size = new System.Drawing.Size(178, 26);
+            lbl_Name.TabIndex = 0;
+            lbl_Name.Text = "Character Name:";
+            // 
+            // txt_Name
+            // 
+            txt_Name.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            txt_Name.Location = new System.Drawing.Point(388, 213);
+            txt_Name.Name = "txt_Name";
+            txt_Name.Size = new System.Drawing.Size(287, 32);
+            txt_Name.TabIndex = 1;
+            txt_Name.TextChanged += Name_Changed;
             // 
             // MainForm
             // 
@@ -354,6 +378,8 @@ namespace JamboreeCharaTool
             tabPage_Graphics.ResumeLayout(false);
             tabPage_Sound.ResumeLayout(false);
             tabPage_Text.ResumeLayout(false);
+            tlp_Text.ResumeLayout(false);
+            tlp_Text.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -382,5 +408,7 @@ namespace JamboreeCharaTool
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox_SelectedLanguage;
         private System.Windows.Forms.Panel pnl_Overview;
         private System.Windows.Forms.TableLayoutPanel tlp_Overview;
+        private System.Windows.Forms.Label lbl_Name;
+        private System.Windows.Forms.TextBox txt_Name;
     }
 }
