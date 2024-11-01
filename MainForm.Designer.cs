@@ -37,7 +37,9 @@ namespace JamboreeCharaTool
             importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             fromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             fromFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toggleThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            exportModToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            setExtractedRomFSFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             characterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripComboBox_Character = new System.Windows.Forms.ToolStripComboBox();
             languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,7 +76,7 @@ namespace JamboreeCharaTool
             // 
             menuStrip1.AllowDrop = true;
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, toggleThemeToolStripMenuItem, characterToolStripMenuItem, toolStripComboBox_Character, languageToolStripMenuItem, toolStripComboBox_Language });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, settingsToolStripMenuItem, characterToolStripMenuItem, toolStripComboBox_Character, languageToolStripMenuItem, toolStripComboBox_Language });
             menuStrip1.Location = new System.Drawing.Point(2, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new System.Drawing.Size(778, 32);
@@ -83,7 +85,7 @@ namespace JamboreeCharaTool
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { loadProjectToolStripMenuItem, saveProjectToolStripMenuItem, importToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { loadProjectToolStripMenuItem, saveProjectToolStripMenuItem, importToolStripMenuItem, exportModToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new System.Drawing.Size(46, 28);
             fileToolStripMenuItem.Text = "File";
@@ -91,13 +93,13 @@ namespace JamboreeCharaTool
             // loadProjectToolStripMenuItem
             // 
             loadProjectToolStripMenuItem.Name = "loadProjectToolStripMenuItem";
-            loadProjectToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            loadProjectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             loadProjectToolStripMenuItem.Text = "Load Project";
             // 
             // saveProjectToolStripMenuItem
             // 
             saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
-            saveProjectToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            saveProjectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             saveProjectToolStripMenuItem.Text = "Save Project";
             saveProjectToolStripMenuItem.Click += SaveProject_Click;
             // 
@@ -105,7 +107,7 @@ namespace JamboreeCharaTool
             // 
             importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { fromFileToolStripMenuItem, fromFolderToolStripMenuItem });
             importToolStripMenuItem.Name = "importToolStripMenuItem";
-            importToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            importToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             importToolStripMenuItem.Text = "Import...";
             // 
             // fromFileToolStripMenuItem
@@ -121,11 +123,27 @@ namespace JamboreeCharaTool
             fromFolderToolStripMenuItem.Text = "From Folder";
             fromFolderToolStripMenuItem.Click += ImportFromFolder_Click;
             // 
-            // toggleThemeToolStripMenuItem
+            // exportModToolStripMenuItem
             // 
-            toggleThemeToolStripMenuItem.Name = "toggleThemeToolStripMenuItem";
-            toggleThemeToolStripMenuItem.Size = new System.Drawing.Size(118, 28);
-            toggleThemeToolStripMenuItem.Text = "Toggle Theme";
+            exportModToolStripMenuItem.Enabled = false;
+            exportModToolStripMenuItem.Name = "exportModToolStripMenuItem";
+            exportModToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            exportModToolStripMenuItem.Text = "Export Mod";
+            exportModToolStripMenuItem.Click += ExportMod_Click;
+            // 
+            // settingsToolStripMenuItem
+            // 
+            settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { setExtractedRomFSFolderToolStripMenuItem });
+            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            settingsToolStripMenuItem.Size = new System.Drawing.Size(76, 28);
+            settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // setExtractedRomFSFolderToolStripMenuItem
+            // 
+            setExtractedRomFSFolderToolStripMenuItem.Name = "setExtractedRomFSFolderToolStripMenuItem";
+            setExtractedRomFSFolderToolStripMenuItem.Size = new System.Drawing.Size(275, 26);
+            setExtractedRomFSFolderToolStripMenuItem.Text = "Set Extracted RomFS Folder";
+            setExtractedRomFSFolderToolStripMenuItem.Click += SetExtractedRomFS_Click;
             // 
             // characterToolStripMenuItem
             // 
@@ -406,7 +424,6 @@ namespace JamboreeCharaTool
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadProjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveProjectToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toggleThemeToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer_Main;
         private MetroSet_UI.Controls.MetroSetTabControl metroSetTabControl_Main;
         private System.Windows.Forms.TabPage tabPage_Graphics;
@@ -428,5 +445,8 @@ namespace JamboreeCharaTool
         private System.Windows.Forms.TextBox txt_Name;
         private System.Windows.Forms.ToolStripMenuItem characterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportModToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setExtractedRomFSFolderToolStripMenuItem;
     }
 }

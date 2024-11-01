@@ -16,6 +16,7 @@ namespace JamboreeCharaTool
     {
         string selectedLanguage = "enUS";
         CharaData selectedCharacter;
+        string extractedRomfsDir = "";
 
         public MainForm()
         {
@@ -30,6 +31,10 @@ namespace JamboreeCharaTool
             toolStripComboBox_Character.SelectedIndex = 0;
             toolStripComboBox_Language.SelectedIndex = 2;
 
+#if DEBUG
+            extractedRomfsDir = "D:\\_Projects\\JAMBOREE\\romfs";
+            exportModToolStripMenuItem.Enabled = true;
+#endif
             PopulateForm();
         }
 
@@ -75,7 +80,7 @@ namespace JamboreeCharaTool
         {
             var pictureBox = (PictureBox)sender;
 
-            var characterID = Convert.ToInt32(pictureBox.Name.Replace("pictureBox_pc",""));
+            var characterID = Convert.ToInt32(pictureBox.Name.Replace("pictureBox_pc", ""));
             toolStripComboBox_Character.SelectedIndex = Array.IndexOf(project.Characters, project.Characters.First(x => x.ID == characterID));
         }
 
@@ -103,61 +108,37 @@ namespace JamboreeCharaTool
             // Use existing project's character data as a base
             CharaData[] importedCharaData = project.Characters.Copy();
 
-            foreach (var file in Directory.GetFiles(folder))
+            // For each language's message BEA file...
+            foreach (var file in Directory.GetFiles(folder).Where(x => Path.GetFileName(x).StartsWith("message~")))
             {
-                // Character Names MSBTs
-                if (Path.GetFileName(file).StartsWith("message~"))
+                string language = Path.GetFileNameWithoutExtension(file).Replace("message~","").Replace(".nx","");
+
+                // Extract MSBT from BEA
+                using (FileStream fs = new FileStream(file, FileMode.Open))
                 {
-                    foreach (var language in languages)
+                    BezelEngineArchive bea = new BezelEngineArchive(fs);
+                    foreach (var archiveFile in bea.FileList)
                     {
-                        string beaFile = $"message~{language.Item1}.nx.bea";
-                        if (Path.GetFileName(file) == beaFile)
+                        // Extract im_common.msbt
+                        if (archiveFile.Key.Contains("im_common"))
                         {
-                            // Extract MSBT from BEA
-                            using (FileStream fs = new FileStream(file, FileMode.Open))
+                            var bytes = archiveFile.Value.FileData;
+
+                            // Convert to YAML
+                            var decompressedBytes = new Zstd().Decompress(bytes);
+                            MSBT msbt = new MSBT(decompressedBytes);
+                            var yamlLines = msbt.ToYaml().Split('\n');
+
+                            // Get Names
+                            for (int i = 0; i < yamlLines.Length; i++)
                             {
-                                BezelEngineArchive bea = new BezelEngineArchive(fs);
-                                foreach (var archiveFile in bea.FileList)
+                                if (yamlLines[i].StartsWith("  im_pc"))
                                 {
-                                    // Extract im_common.msbt
-                                    if (archiveFile.Key.Contains("im_common"))
-                                    {
-                                        var bytes = archiveFile.Value.FileData;
+                                    int id = Convert.ToInt32(yamlLines[i].Replace("  im_pc", "").Split('_')[0]);
+                                    string name = yamlLines[i + 1].Replace("   Contents: ", "").Replace("\r", "");
 
-                                        // Convert to YAML
-                                        var decompressedBytes = new Zstd().Decompress(bytes);
-                                        MSBT msbt = new MSBT(decompressedBytes);
-                                        var yamlLines = msbt.ToYaml().Split('\n');
-
-                                        // Get Names
-                                        for (int i = 0; i < yamlLines.Length; i++)
-                                        {
-                                            if (yamlLines[i].StartsWith("  im_pc"))
-                                            {
-                                                int id = Convert.ToInt32(yamlLines[i].Replace("  im_pc", "").Split('_')[0]);
-                                                string name = yamlLines[i + 1].Replace("   Contents: ", "").Replace("\r", "");
-
-                                                switch (language.Item1)
-                                                {
-                                                    case "deEU": importedCharaData.First(x => x.ID == id).Name_deEU = name; break;
-                                                    case "enEU": importedCharaData.First(x => x.ID == id).Name_enEU = name; break;
-                                                    case "enUS": importedCharaData.First(x => x.ID == id).Name_enUS = name; break;
-                                                    case "esUS": importedCharaData.First(x => x.ID == id).Name_esUS = name; break;
-                                                    case "frCA": importedCharaData.First(x => x.ID == id).Name_frCA = name; break;
-                                                    case "frEU": importedCharaData.First(x => x.ID == id).Name_frEU = name; break;
-                                                    case "itEU": importedCharaData.First(x => x.ID == id).Name_itEU = name; break;
-                                                    case "jaJP": importedCharaData.First(x => x.ID == id).Name_jaJP = name; break;
-                                                    case "koKR": importedCharaData.First(x => x.ID == id).Name_koKR = name; break;
-                                                    case "nlEU": importedCharaData.First(x => x.ID == id).Name_nlEU = name; break;
-                                                    case "ptBR": importedCharaData.First(x => x.ID == id).Name_ptBR = name; break;
-                                                    case "ruEU": importedCharaData.First(x => x.ID == id).Name_ruEU = name; break;
-                                                    case "zhCN": importedCharaData.First(x => x.ID == id).Name_zhCN = name; break;
-                                                    case "zhTW": importedCharaData.First(x => x.ID == id).Name_zhTW = name; break;
-                                                    default: break;
-                                                }
-                                            }
-                                        }
-                                    }
+                                    var character = importedCharaData.First(x => x.ID == id);
+                                    character.GetType().GetProperty($"Name_{language}").SetValue(character, txt_Name.Text);
                                 }
                             }
                         }
@@ -171,11 +152,15 @@ namespace JamboreeCharaTool
                 var ogChar = project.Characters[i];
                 foreach (var newChar in importedCharaData.Where(x => x.ID == ogChar.ID))
                 {
-                    if (newChar != ogChar && WinFormsDialogs.ShowMessageBox("Replace Character?",
-                        $"Replace data for the following character?\n{ogChar.Name_enUS} ==> {newChar.Name_enUS}"))
+                    if (newChar != ogChar)
                     {
-                        project.Characters[i] = newChar;
+                        if (WinFormsDialogs.ShowMessageBox("Replace Character?",
+                            $"Replace data for the following character?\n{ogChar.Name_enUS} ==> {newChar.Name_enUS}", MessageBoxButtons.YesNo))
+                        {
+                            project.Characters[i] = newChar;
+                        }
                     }
+
                 }
             }
         }
@@ -188,7 +173,7 @@ namespace JamboreeCharaTool
 
             UpdateTextTab();
             UpdateOverviewTab();
-            
+
         }
 
         private void UpdateTextTab()
@@ -228,7 +213,7 @@ namespace JamboreeCharaTool
 
                 charIndex++;
             }
-            
+
         }
 
         private void SaveProject_Click(object sender, EventArgs e)
@@ -243,6 +228,89 @@ namespace JamboreeCharaTool
 
             selectedCharacter.GetType().GetProperty($"Name_{selectedLanguage}").SetValue(selectedCharacter, txt_Name.Text);
             UpdateOverviewTab();
+        }
+
+        private void ExportMod_Click(object sender, EventArgs e)
+        {
+            string folder = WinFormsDialogs.SelectFolder("Choose Folder to Output Mod");
+            if (!Directory.Exists(folder))
+                return;
+
+            // For each language's message BEA file...
+            foreach (var file in Directory.GetFiles(Path.Combine(extractedRomfsDir, "Archive")).Where(x => Path.GetFileName(x).StartsWith("message~")))
+            {
+                string language = Path.GetFileNameWithoutExtension(file).Replace("message~", "").Replace(".nx", "");
+
+                // Extract MSBT from BEA
+                using (FileStream fs = new FileStream(file, FileMode.Open))
+                {
+                    BezelEngineArchive bea = new BezelEngineArchive(fs);
+                    foreach (var archiveFile in bea.FileList)
+                    {
+                        // Extract im_common.msbt
+                        if (archiveFile.Key.Contains("im_common"))
+                        {
+                            var bytes = archiveFile.Value.FileData;
+
+                            // Convert to YAML
+                            var decompressedBytes = new Zstd().Decompress(bytes);
+                            MSBT msbt = new MSBT(decompressedBytes);
+                            var yamlLines = msbt.ToYaml().Split('\n');
+
+                            /*
+                            foreach(var msg in msbt.Messages)
+                            {
+                                string msgName = msg.Key.ToString();
+                                if (msgName.StartsWith("  im_pc"))
+                                {
+                                    int id = Convert.ToInt32(msgName.Replace("  im_pc", "").Split('_')[0]);
+                                    var character = project.Characters.First(x => x.ID == id);
+                                    var newName = character.GetType().GetProperty($"Name_{language}").GetValue(character).ToString();
+
+                                    // read only so can't do that
+                                    msg.Value = new CLMS.Message(new object[] { newName });
+                                }
+                            }
+                            */
+
+                            // Update Names
+                            for (int i = 0; i < yamlLines.Length; i++)
+                            {
+                                if (yamlLines[i].StartsWith("  im_pc"))
+                                {
+                                    int id = Convert.ToInt32(yamlLines[i].Replace("  im_pc", "").Split('_')[0]);
+                                    var character = project.Characters.First(x => x.ID == id);
+                                    var newName = character.GetType().GetProperty($"Name_{language}").GetValue(character).ToString();
+                                    yamlLines[i + 1] = $"   Contents: {newName}";
+                                }
+                            }
+
+                            // Convert back to MSBT
+                            string yamlTxt = string.Join('\n', yamlLines);
+                            MSBT newMsbt = MSBT.FromYaml(yamlTxt, null);
+                            File.WriteAllBytes(Path.Combine(folder, "edited.msbt"), newMsbt.Save());
+                            MessageBox.Show("Saved MSBT");
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void SetExtractedRomFS_Click(object sender, EventArgs e)
+        {
+            string romfsDir = WinFormsDialogs.SelectFolder("Choose Extracted RomFS Folder");
+            if (Directory.GetDirectories(romfsDir).Any(x => Path.GetFileName(x) == "nro"))
+            {
+                extractedRomfsDir = romfsDir;
+                exportModToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                extractedRomfsDir = "";
+                MessageBox.Show("Invalid RomFS directory chosen!");
+                exportModToolStripMenuItem.Enabled = false;
+            }
         }
     }
 }
