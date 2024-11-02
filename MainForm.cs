@@ -135,10 +135,10 @@ namespace JamboreeCharaTool
                                 if (yamlLines[i].StartsWith("  im_pc"))
                                 {
                                     int id = Convert.ToInt32(yamlLines[i].Replace("  im_pc", "").Split('_')[0]);
-                                    string name = yamlLines[i + 1].Replace("   Contents: ", "").Replace("\r", "");
+                                    string name = yamlLines[i + 1].Replace("    Contents: ", "").Replace("\r", "");
 
                                     var character = importedCharaData.First(x => x.ID == id);
-                                    character.GetType().GetProperty($"Name_{language}").SetValue(character, txt_Name.Text);
+                                    importedCharaData.First(x => x.ID == id).GetType().GetProperty($"Name_{language}").SetValue(character, name);
                                 }
                             }
                         }
@@ -255,23 +255,8 @@ namespace JamboreeCharaTool
                             // Convert to YAML
                             var decompressedBytes = new Zstd().Decompress(bytes);
                             MSBT msbt = new MSBT(decompressedBytes);
+                            msbt.SizePerAttribute = 15; // this is 19 by default for some reason??
                             var yamlLines = msbt.ToYaml().Split('\n');
-
-                            /*
-                            foreach(var msg in msbt.Messages)
-                            {
-                                string msgName = msg.Key.ToString();
-                                if (msgName.StartsWith("  im_pc"))
-                                {
-                                    int id = Convert.ToInt32(msgName.Replace("  im_pc", "").Split('_')[0]);
-                                    var character = project.Characters.First(x => x.ID == id);
-                                    var newName = character.GetType().GetProperty($"Name_{language}").GetValue(character).ToString();
-
-                                    // read only so can't do that
-                                    msg.Value = new CLMS.Message(new object[] { newName });
-                                }
-                            }
-                            */
 
                             // Update Names
                             for (int i = 0; i < yamlLines.Length; i++)
@@ -281,7 +266,7 @@ namespace JamboreeCharaTool
                                     int id = Convert.ToInt32(yamlLines[i].Replace("  im_pc", "").Split('_')[0]);
                                     var character = project.Characters.First(x => x.ID == id);
                                     var newName = character.GetType().GetProperty($"Name_{language}").GetValue(character).ToString();
-                                    yamlLines[i + 1] = $"   Contents: {newName}";
+                                    yamlLines[i + 1] = $"    Contents: {newName}\r";
                                 }
                             }
 
@@ -289,6 +274,7 @@ namespace JamboreeCharaTool
                             string yamlTxt = string.Join('\n', yamlLines);
                             MSBT newMsbt = MSBT.FromYaml(yamlTxt, null);
                             File.WriteAllBytes(Path.Combine(folder, "edited.msbt"), newMsbt.Save());
+                            
                             MessageBox.Show("Saved MSBT");
                         }
                     }

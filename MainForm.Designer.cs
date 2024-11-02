@@ -93,13 +93,13 @@ namespace JamboreeCharaTool
             // loadProjectToolStripMenuItem
             // 
             loadProjectToolStripMenuItem.Name = "loadProjectToolStripMenuItem";
-            loadProjectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            loadProjectToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             loadProjectToolStripMenuItem.Text = "Load Project";
             // 
             // saveProjectToolStripMenuItem
             // 
             saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
-            saveProjectToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            saveProjectToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             saveProjectToolStripMenuItem.Text = "Save Project";
             saveProjectToolStripMenuItem.Click += SaveProject_Click;
             // 
@@ -107,7 +107,7 @@ namespace JamboreeCharaTool
             // 
             importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { fromFileToolStripMenuItem, fromFolderToolStripMenuItem });
             importToolStripMenuItem.Name = "importToolStripMenuItem";
-            importToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            importToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             importToolStripMenuItem.Text = "Import...";
             // 
             // fromFileToolStripMenuItem
@@ -127,7 +127,7 @@ namespace JamboreeCharaTool
             // 
             exportModToolStripMenuItem.Enabled = false;
             exportModToolStripMenuItem.Name = "exportModToolStripMenuItem";
-            exportModToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            exportModToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             exportModToolStripMenuItem.Text = "Export Mod";
             exportModToolStripMenuItem.Click += ExportMod_Click;
             // 
@@ -170,7 +170,7 @@ namespace JamboreeCharaTool
             // toolStripComboBox_Language
             // 
             toolStripComboBox_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            toolStripComboBox_Language.Items.AddRange(new object[] { "German (Europe)", "English (Europe)", "English (North America)", "Spanish (North America)", "French (Canada)", "French (Europe)", "Italian (Europe)", "Japanese (Japan)", "Korean (South Korea)", "Dutch (Netherlands)", "Portuguese (Brazil)", "Russian (Europe)", "Chinese (China)", "Chinese (Taiwan)" });
+            toolStripComboBox_Language.Items.AddRange(new object[] { "German (Europe)", "English (Europe)", "English (North America)", "Spanish (Europe)", "Spanish (North America)", "French (Canada)", "French (Europe)", "Italian (Europe)", "Japanese (Japan)", "Korean (South Korea)", "Dutch (Netherlands)", "Portuguese (Brazil)", "Russian (Europe)", "Chinese (China)", "Chinese (Taiwan)" });
             toolStripComboBox_Language.Name = "toolStripComboBox_Language";
             toolStripComboBox_Language.Size = new System.Drawing.Size(191, 28);
             toolStripComboBox_Language.SelectedIndexChanged += SelectedLanguage_Changed;
