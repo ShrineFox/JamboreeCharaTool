@@ -245,6 +245,7 @@ namespace JamboreeCharaTool
                 using (FileStream fs = new FileStream(file, FileMode.Open))
                 {
                     BezelEngineArchive bea = new BezelEngineArchive(fs);
+
                     foreach (var archiveFile in bea.FileList)
                     {
                         // Extract im_common.msbt
@@ -273,13 +274,18 @@ namespace JamboreeCharaTool
                             // Convert back to MSBT
                             string yamlTxt = string.Join('\n', yamlLines);
                             MSBT newMsbt = MSBT.FromYaml(yamlTxt, null);
-                            File.WriteAllBytes(Path.Combine(folder, "edited.msbt"), newMsbt.Save());
-                            
-                            MessageBox.Show("Saved MSBT");
+
+                            // Compress MSBT and replace OG file in BEA
+                            var zstdMsbt = new Zstd().Compress(newMsbt.Save());
+                            archiveFile.Value.FileData = zstdMsbt.ToArray();
                         }
                     }
+                    string outDir = Path.Combine(folder, "Archive");
+                    Directory.CreateDirectory(outDir);
+                    bea.Save(Path.Combine(outDir, Path.GetFileName(file)));
                 }
             }
+            MessageBox.Show("Done exporting mod!");
 
         }
 
