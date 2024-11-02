@@ -41,22 +41,27 @@ namespace JamboreeCharaTool
             settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             setExtractedRomFSFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             characterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripComboBox_Character = new System.Windows.Forms.ToolStripComboBox();
+            comboBox_Character = new System.Windows.Forms.ToolStripComboBox();
             languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripComboBox_Language = new System.Windows.Forms.ToolStripComboBox();
+            comboBox_Language = new System.Windows.Forms.ToolStripComboBox();
             splitContainer_Main = new System.Windows.Forms.SplitContainer();
             metroSetTabControl_Main = new MetroSet_UI.Controls.MetroSetTabControl();
+            tabPage_Graphics = new System.Windows.Forms.TabPage();
+            tlp_Graphics = new System.Windows.Forms.TableLayoutPanel();
+            groupBox_ProfileIcon = new System.Windows.Forms.GroupBox();
+            tlp_ProfileIcon = new System.Windows.Forms.TableLayoutPanel();
+            pictureBox_ProfileIcon = new System.Windows.Forms.PictureBox();
+            txt_ProfileIcon = new System.Windows.Forms.TextBox();
+            btn_ProfileIcon = new System.Windows.Forms.Button();
+            tabPage_Overview = new System.Windows.Forms.TabPage();
+            pnl_Overview = new System.Windows.Forms.Panel();
+            tlp_Overview = new System.Windows.Forms.TableLayoutPanel();
+            tabPage_Sound = new System.Windows.Forms.TabPage();
+            tlp_Sound = new System.Windows.Forms.TableLayoutPanel();
             tabPage_Text = new System.Windows.Forms.TabPage();
             tlp_Text = new System.Windows.Forms.TableLayoutPanel();
             lbl_Name = new System.Windows.Forms.Label();
             txt_Name = new System.Windows.Forms.TextBox();
-            tabPage_Overview = new System.Windows.Forms.TabPage();
-            pnl_Overview = new System.Windows.Forms.Panel();
-            tlp_Overview = new System.Windows.Forms.TableLayoutPanel();
-            tabPage_Graphics = new System.Windows.Forms.TabPage();
-            tlp_Graphics = new System.Windows.Forms.TableLayoutPanel();
-            tabPage_Sound = new System.Windows.Forms.TabPage();
-            tlp_Sound = new System.Windows.Forms.TableLayoutPanel();
             rtb_Log = new System.Windows.Forms.RichTextBox();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer_Main).BeginInit();
@@ -64,19 +69,23 @@ namespace JamboreeCharaTool
             splitContainer_Main.Panel2.SuspendLayout();
             splitContainer_Main.SuspendLayout();
             metroSetTabControl_Main.SuspendLayout();
-            tabPage_Text.SuspendLayout();
-            tlp_Text.SuspendLayout();
+            tabPage_Graphics.SuspendLayout();
+            tlp_Graphics.SuspendLayout();
+            groupBox_ProfileIcon.SuspendLayout();
+            tlp_ProfileIcon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_ProfileIcon).BeginInit();
             tabPage_Overview.SuspendLayout();
             pnl_Overview.SuspendLayout();
-            tabPage_Graphics.SuspendLayout();
             tabPage_Sound.SuspendLayout();
+            tabPage_Text.SuspendLayout();
+            tlp_Text.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.AllowDrop = true;
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, settingsToolStripMenuItem, characterToolStripMenuItem, toolStripComboBox_Character, languageToolStripMenuItem, toolStripComboBox_Language });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, settingsToolStripMenuItem, characterToolStripMenuItem, comboBox_Character, languageToolStripMenuItem, comboBox_Language });
             menuStrip1.Location = new System.Drawing.Point(2, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new System.Drawing.Size(778, 32);
@@ -152,13 +161,13 @@ namespace JamboreeCharaTool
             characterToolStripMenuItem.Size = new System.Drawing.Size(89, 28);
             characterToolStripMenuItem.Text = "Character:";
             // 
-            // toolStripComboBox_Character
+            // comboBox_Character
             // 
-            toolStripComboBox_Character.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            toolStripComboBox_Character.Items.AddRange(new object[] { "Mario", "Luigi", "Peach", "Daisy", "Wario", "Waluigi", "Yoshi", "Toadette", "Toad", "Rosalina", "Donkey Kong", "Birdo", "Pauline", "Bowser", "Goomba", "Shy Guy", "Koopa Troopa", "Monty Mole", "Bowser Jr.", "Boo", "Spike", "Ninji" });
-            toolStripComboBox_Character.Name = "toolStripComboBox_Character";
-            toolStripComboBox_Character.Size = new System.Drawing.Size(151, 28);
-            toolStripComboBox_Character.SelectedIndexChanged += SelectedCharacter_Changed;
+            comboBox_Character.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBox_Character.Items.AddRange(new object[] { "Mario", "Luigi", "Peach", "Daisy", "Wario", "Waluigi", "Yoshi", "Toadette", "Toad", "Rosalina", "Donkey Kong", "Birdo", "Pauline", "Bowser", "Goomba", "Shy Guy", "Koopa Troopa", "Monty Mole", "Bowser Jr.", "Boo", "Spike", "Ninji" });
+            comboBox_Character.Name = "comboBox_Character";
+            comboBox_Character.Size = new System.Drawing.Size(151, 28);
+            comboBox_Character.SelectedIndexChanged += SelectedCharacter_Changed;
             // 
             // languageToolStripMenuItem
             // 
@@ -167,13 +176,12 @@ namespace JamboreeCharaTool
             languageToolStripMenuItem.Size = new System.Drawing.Size(91, 28);
             languageToolStripMenuItem.Text = "Language:";
             // 
-            // toolStripComboBox_Language
+            // comboBox_Language
             // 
-            toolStripComboBox_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            toolStripComboBox_Language.Items.AddRange(new object[] { "German (Europe)", "English (Europe)", "English (North America)", "Spanish (Europe)", "Spanish (North America)", "French (Canada)", "French (Europe)", "Italian (Europe)", "Japanese (Japan)", "Korean (South Korea)", "Dutch (Netherlands)", "Portuguese (Brazil)", "Russian (Europe)", "Chinese (China)", "Chinese (Taiwan)" });
-            toolStripComboBox_Language.Name = "toolStripComboBox_Language";
-            toolStripComboBox_Language.Size = new System.Drawing.Size(191, 28);
-            toolStripComboBox_Language.SelectedIndexChanged += SelectedLanguage_Changed;
+            comboBox_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBox_Language.Name = "comboBox_Language";
+            comboBox_Language.Size = new System.Drawing.Size(191, 28);
+            comboBox_Language.SelectedIndexChanged += this.SelectedLanguage_Changed;
             // 
             // splitContainer_Main
             // 
@@ -202,10 +210,10 @@ namespace JamboreeCharaTool
             metroSetTabControl_Main.AnimateEasingType = MetroSet_UI.Enums.EasingType.CubeOut;
             metroSetTabControl_Main.AnimateTime = 200;
             metroSetTabControl_Main.BackgroundColor = System.Drawing.Color.FromArgb(30, 30, 30);
-            metroSetTabControl_Main.Controls.Add(tabPage_Text);
-            metroSetTabControl_Main.Controls.Add(tabPage_Overview);
             metroSetTabControl_Main.Controls.Add(tabPage_Graphics);
+            metroSetTabControl_Main.Controls.Add(tabPage_Overview);
             metroSetTabControl_Main.Controls.Add(tabPage_Sound);
+            metroSetTabControl_Main.Controls.Add(tabPage_Text);
             metroSetTabControl_Main.Dock = System.Windows.Forms.DockStyle.Fill;
             metroSetTabControl_Main.IsDerivedStyle = true;
             metroSetTabControl_Main.ItemSize = new System.Drawing.Size(100, 38);
@@ -224,6 +232,158 @@ namespace JamboreeCharaTool
             metroSetTabControl_Main.ThemeName = "MetroDark";
             metroSetTabControl_Main.UnselectedTextColor = System.Drawing.Color.Gray;
             metroSetTabControl_Main.UseAnimation = false;
+            // 
+            // tabPage_Graphics
+            // 
+            tabPage_Graphics.AllowDrop = true;
+            tabPage_Graphics.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            tabPage_Graphics.Controls.Add(tlp_Graphics);
+            tabPage_Graphics.Location = new System.Drawing.Point(4, 42);
+            tabPage_Graphics.Name = "tabPage_Graphics";
+            tabPage_Graphics.Size = new System.Drawing.Size(770, 458);
+            tabPage_Graphics.TabIndex = 0;
+            tabPage_Graphics.Text = "Graphics";
+            // 
+            // tlp_Graphics
+            // 
+            tlp_Graphics.AllowDrop = true;
+            tlp_Graphics.ColumnCount = 2;
+            tlp_Graphics.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Graphics.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Graphics.Controls.Add(groupBox_ProfileIcon, 0, 0);
+            tlp_Graphics.Dock = System.Windows.Forms.DockStyle.Fill;
+            tlp_Graphics.Location = new System.Drawing.Point(0, 0);
+            tlp_Graphics.Name = "tlp_Graphics";
+            tlp_Graphics.RowCount = 2;
+            tlp_Graphics.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            tlp_Graphics.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            tlp_Graphics.Size = new System.Drawing.Size(770, 458);
+            tlp_Graphics.TabIndex = 3;
+            // 
+            // groupBox_ProfileIcon
+            // 
+            tlp_Graphics.SetColumnSpan(groupBox_ProfileIcon, 2);
+            groupBox_ProfileIcon.Controls.Add(tlp_ProfileIcon);
+            groupBox_ProfileIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox_ProfileIcon.ForeColor = System.Drawing.Color.Silver;
+            groupBox_ProfileIcon.Location = new System.Drawing.Point(3, 3);
+            groupBox_ProfileIcon.Name = "groupBox_ProfileIcon";
+            groupBox_ProfileIcon.Size = new System.Drawing.Size(764, 200);
+            groupBox_ProfileIcon.TabIndex = 1;
+            groupBox_ProfileIcon.TabStop = false;
+            groupBox_ProfileIcon.Text = "Profile Icon";
+            // 
+            // tlp_ProfileIcon
+            // 
+            tlp_ProfileIcon.ColumnCount = 3;
+            tlp_ProfileIcon.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_ProfileIcon.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tlp_ProfileIcon.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tlp_ProfileIcon.Controls.Add(pictureBox_ProfileIcon, 0, 0);
+            tlp_ProfileIcon.Controls.Add(txt_ProfileIcon, 1, 0);
+            tlp_ProfileIcon.Controls.Add(btn_ProfileIcon, 2, 0);
+            tlp_ProfileIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            tlp_ProfileIcon.Location = new System.Drawing.Point(3, 28);
+            tlp_ProfileIcon.Name = "tlp_ProfileIcon";
+            tlp_ProfileIcon.RowCount = 1;
+            tlp_ProfileIcon.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tlp_ProfileIcon.Size = new System.Drawing.Size(758, 169);
+            tlp_ProfileIcon.TabIndex = 0;
+            // 
+            // pictureBox_ProfileIcon
+            // 
+            pictureBox_ProfileIcon.Dock = System.Windows.Forms.DockStyle.Fill;
+            pictureBox_ProfileIcon.Location = new System.Drawing.Point(3, 3);
+            pictureBox_ProfileIcon.Name = "pictureBox_ProfileIcon";
+            pictureBox_ProfileIcon.Size = new System.Drawing.Size(373, 163);
+            pictureBox_ProfileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pictureBox_ProfileIcon.TabIndex = 0;
+            pictureBox_ProfileIcon.TabStop = false;
+            // 
+            // txt_ProfileIcon
+            // 
+            txt_ProfileIcon.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txt_ProfileIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            txt_ProfileIcon.Location = new System.Drawing.Point(382, 68);
+            txt_ProfileIcon.Name = "txt_ProfileIcon";
+            txt_ProfileIcon.Size = new System.Drawing.Size(297, 32);
+            txt_ProfileIcon.TabIndex = 1;
+            // 
+            // btn_ProfileIcon
+            // 
+            btn_ProfileIcon.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            btn_ProfileIcon.Location = new System.Drawing.Point(685, 70);
+            btn_ProfileIcon.Name = "btn_ProfileIcon";
+            btn_ProfileIcon.Size = new System.Drawing.Size(70, 29);
+            btn_ProfileIcon.TabIndex = 2;
+            btn_ProfileIcon.Text = "...";
+            btn_ProfileIcon.UseVisualStyleBackColor = true;
+            // 
+            // tabPage_Overview
+            // 
+            tabPage_Overview.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            tabPage_Overview.Controls.Add(pnl_Overview);
+            tabPage_Overview.Location = new System.Drawing.Point(4, 42);
+            tabPage_Overview.Name = "tabPage_Overview";
+            tabPage_Overview.Size = new System.Drawing.Size(770, 458);
+            tabPage_Overview.TabIndex = 3;
+            tabPage_Overview.Text = "Overview";
+            // 
+            // pnl_Overview
+            // 
+            pnl_Overview.Controls.Add(tlp_Overview);
+            pnl_Overview.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnl_Overview.Location = new System.Drawing.Point(0, 0);
+            pnl_Overview.Name = "pnl_Overview";
+            pnl_Overview.Size = new System.Drawing.Size(770, 458);
+            pnl_Overview.TabIndex = 0;
+            // 
+            // tlp_Overview
+            // 
+            tlp_Overview.AllowDrop = true;
+            tlp_Overview.ColumnCount = 6;
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
+            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
+            tlp_Overview.Dock = System.Windows.Forms.DockStyle.Fill;
+            tlp_Overview.Location = new System.Drawing.Point(0, 0);
+            tlp_Overview.Name = "tlp_Overview";
+            tlp_Overview.RowCount = 4;
+            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tlp_Overview.Size = new System.Drawing.Size(770, 458);
+            tlp_Overview.TabIndex = 5;
+            // 
+            // tabPage_Sound
+            // 
+            tabPage_Sound.AllowDrop = true;
+            tabPage_Sound.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            tabPage_Sound.Controls.Add(tlp_Sound);
+            tabPage_Sound.Location = new System.Drawing.Point(4, 42);
+            tabPage_Sound.Name = "tabPage_Sound";
+            tabPage_Sound.Size = new System.Drawing.Size(770, 458);
+            tabPage_Sound.TabIndex = 1;
+            tabPage_Sound.Text = "Sound";
+            // 
+            // tlp_Sound
+            // 
+            tlp_Sound.AllowDrop = true;
+            tlp_Sound.ColumnCount = 2;
+            tlp_Sound.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Sound.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlp_Sound.Dock = System.Windows.Forms.DockStyle.Fill;
+            tlp_Sound.Location = new System.Drawing.Point(0, 0);
+            tlp_Sound.Name = "tlp_Sound";
+            tlp_Sound.RowCount = 2;
+            tlp_Sound.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            tlp_Sound.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
+            tlp_Sound.Size = new System.Drawing.Size(770, 458);
+            tlp_Sound.TabIndex = 4;
             // 
             // tabPage_Text
             // 
@@ -270,98 +430,6 @@ namespace JamboreeCharaTool
             txt_Name.TabIndex = 1;
             txt_Name.TextChanged += Name_Changed;
             // 
-            // tabPage_Overview
-            // 
-            tabPage_Overview.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
-            tabPage_Overview.Controls.Add(pnl_Overview);
-            tabPage_Overview.Location = new System.Drawing.Point(4, 42);
-            tabPage_Overview.Name = "tabPage_Overview";
-            tabPage_Overview.Size = new System.Drawing.Size(770, 458);
-            tabPage_Overview.TabIndex = 3;
-            tabPage_Overview.Text = "Overview";
-            // 
-            // pnl_Overview
-            // 
-            pnl_Overview.Controls.Add(tlp_Overview);
-            pnl_Overview.Dock = System.Windows.Forms.DockStyle.Fill;
-            pnl_Overview.Location = new System.Drawing.Point(0, 0);
-            pnl_Overview.Name = "pnl_Overview";
-            pnl_Overview.Size = new System.Drawing.Size(770, 458);
-            pnl_Overview.TabIndex = 0;
-            // 
-            // tlp_Overview
-            // 
-            tlp_Overview.AllowDrop = true;
-            tlp_Overview.ColumnCount = 6;
-            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
-            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
-            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
-            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
-            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
-            tlp_Overview.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.666666F));
-            tlp_Overview.Dock = System.Windows.Forms.DockStyle.Fill;
-            tlp_Overview.Location = new System.Drawing.Point(0, 0);
-            tlp_Overview.Name = "tlp_Overview";
-            tlp_Overview.RowCount = 4;
-            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            tlp_Overview.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            tlp_Overview.Size = new System.Drawing.Size(770, 458);
-            tlp_Overview.TabIndex = 5;
-            // 
-            // tabPage_Graphics
-            // 
-            tabPage_Graphics.AllowDrop = true;
-            tabPage_Graphics.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
-            tabPage_Graphics.Controls.Add(tlp_Graphics);
-            tabPage_Graphics.Location = new System.Drawing.Point(4, 42);
-            tabPage_Graphics.Name = "tabPage_Graphics";
-            tabPage_Graphics.Size = new System.Drawing.Size(770, 458);
-            tabPage_Graphics.TabIndex = 0;
-            tabPage_Graphics.Text = "Graphics";
-            // 
-            // tlp_Graphics
-            // 
-            tlp_Graphics.AllowDrop = true;
-            tlp_Graphics.ColumnCount = 2;
-            tlp_Graphics.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tlp_Graphics.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tlp_Graphics.Dock = System.Windows.Forms.DockStyle.Fill;
-            tlp_Graphics.Location = new System.Drawing.Point(0, 0);
-            tlp_Graphics.Name = "tlp_Graphics";
-            tlp_Graphics.RowCount = 2;
-            tlp_Graphics.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            tlp_Graphics.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            tlp_Graphics.Size = new System.Drawing.Size(770, 458);
-            tlp_Graphics.TabIndex = 3;
-            // 
-            // tabPage_Sound
-            // 
-            tabPage_Sound.AllowDrop = true;
-            tabPage_Sound.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
-            tabPage_Sound.Controls.Add(tlp_Sound);
-            tabPage_Sound.Location = new System.Drawing.Point(4, 42);
-            tabPage_Sound.Name = "tabPage_Sound";
-            tabPage_Sound.Size = new System.Drawing.Size(770, 458);
-            tabPage_Sound.TabIndex = 1;
-            tabPage_Sound.Text = "Sound";
-            // 
-            // tlp_Sound
-            // 
-            tlp_Sound.AllowDrop = true;
-            tlp_Sound.ColumnCount = 2;
-            tlp_Sound.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tlp_Sound.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tlp_Sound.Dock = System.Windows.Forms.DockStyle.Fill;
-            tlp_Sound.Location = new System.Drawing.Point(0, 0);
-            tlp_Sound.Name = "tlp_Sound";
-            tlp_Sound.RowCount = 2;
-            tlp_Sound.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            tlp_Sound.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            tlp_Sound.Size = new System.Drawing.Size(770, 458);
-            tlp_Sound.TabIndex = 4;
-            // 
             // rtb_Log
             // 
             rtb_Log.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
@@ -407,13 +475,18 @@ namespace JamboreeCharaTool
             ((System.ComponentModel.ISupportInitialize)splitContainer_Main).EndInit();
             splitContainer_Main.ResumeLayout(false);
             metroSetTabControl_Main.ResumeLayout(false);
+            tabPage_Graphics.ResumeLayout(false);
+            tlp_Graphics.ResumeLayout(false);
+            groupBox_ProfileIcon.ResumeLayout(false);
+            tlp_ProfileIcon.ResumeLayout(false);
+            tlp_ProfileIcon.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_ProfileIcon).EndInit();
+            tabPage_Overview.ResumeLayout(false);
+            pnl_Overview.ResumeLayout(false);
+            tabPage_Sound.ResumeLayout(false);
             tabPage_Text.ResumeLayout(false);
             tlp_Text.ResumeLayout(false);
             tlp_Text.PerformLayout();
-            tabPage_Overview.ResumeLayout(false);
-            pnl_Overview.ResumeLayout(false);
-            tabPage_Graphics.ResumeLayout(false);
-            tabPage_Sound.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -437,8 +510,8 @@ namespace JamboreeCharaTool
         private System.Windows.Forms.ToolStripMenuItem fromFolderToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPage_Overview;
         private System.Windows.Forms.TableLayoutPanel tlp_Sound;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_Character;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_Language;
+        private System.Windows.Forms.ToolStripComboBox comboBox_Character;
+        private System.Windows.Forms.ToolStripComboBox comboBox_Language;
         private System.Windows.Forms.Panel pnl_Overview;
         private System.Windows.Forms.TableLayoutPanel tlp_Overview;
         private System.Windows.Forms.Label lbl_Name;
@@ -448,5 +521,10 @@ namespace JamboreeCharaTool
         private System.Windows.Forms.ToolStripMenuItem exportModToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setExtractedRomFSFolderToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox_ProfileIcon;
+        private System.Windows.Forms.TableLayoutPanel tlp_ProfileIcon;
+        private System.Windows.Forms.PictureBox pictureBox_ProfileIcon;
+        private System.Windows.Forms.TextBox txt_ProfileIcon;
+        private System.Windows.Forms.Button btn_ProfileIcon;
     }
 }

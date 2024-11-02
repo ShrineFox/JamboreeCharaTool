@@ -15,21 +15,22 @@ namespace JamboreeCharaTool
     {
         public static Project project = new Project();
         public static string projectPath = "";
+        string extractedRomfsDir = "";
 
         public Tuple<string, string>[] languages = new Tuple<string, string>[] {
-            new Tuple<string, string>("deEU","German"),
-            new Tuple<string, string>("enEU","English (Europe)"),
             new Tuple<string, string>("enUS","English (American)"),
-            new Tuple<string, string>("esEU","Spanish (Europe)"),
-            new Tuple<string, string>("esUS","Spanish (Americas)"),
+            new Tuple<string, string>("enEU","English (Europe)"),
             new Tuple<string, string>("frCA","French (Canadian)"),
             new Tuple<string, string>("frEU","French (Europe)"),
             new Tuple<string, string>("itEU","Italian"),
+            new Tuple<string, string>("deEU","German"),
+            new Tuple<string, string>("esUS","Spanish (Americas)"),
+            new Tuple<string, string>("esEU","Spanish (Europe)"),
+            new Tuple<string, string>("ptBR","Portuguese"),
+            new Tuple<string, string>("nlEU","Dutch"),
+            new Tuple<string, string>("ruEU","Russian"),
             new Tuple<string, string>("jaJP","Japanese"),
             new Tuple<string, string>("koKR","Korean"),
-            new Tuple<string, string>("nlEU","Dutch"),
-            new Tuple<string, string>("ptBR","Portuguese"),
-            new Tuple<string, string>("ruEU","Russian"),
             new Tuple<string, string>("zhCN","Chinese (China)"),
             new Tuple<string, string>("zhTW","Chinese (Taiwan)")
         };
@@ -80,6 +81,30 @@ namespace JamboreeCharaTool
             projectPath = outPath;
             File.WriteAllText(outPath, JsonConvert.SerializeObject(project, Formatting.Indented));
             MessageBox.Show($"Saved project file to:\n{outPath}", "Project Saved");
+        }
+
+        // Helper Functions
+
+        private CharaData GetSelectedCharacter()
+        {
+            return (CharaData)comboBox_Character.SelectedItem;
+        }
+
+        private string GetSelectedLanguage()
+        {
+            return ((Tuple<string, string>)comboBox_Language.SelectedItem).Item1;
+        }
+
+        private void SetCharacterName(CharaData character, string name, string language)
+        {
+            character.GetType().GetProperty($"Name_{language}").SetValue(character, name);
+        }
+
+        private string GetCharacterName(CharaData charaData, string language = "")
+        {
+            if (language == "")
+                language = ((Tuple<string, string>)comboBox_Language.SelectedItem).Item1;
+            return charaData.GetType().GetProperty($"Name_{language}").GetValue(charaData).ToString();
         }
     }
 }
