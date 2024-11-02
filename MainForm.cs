@@ -255,9 +255,10 @@ namespace JamboreeCharaTool
 
                             // Convert to YAML
                             var decompressedBytes = new Zstd().Decompress(bytes);
+                            MSBP msbp = new MSBP(File.ReadAllBytes("./Dependencies/bq.msbp"));
                             MSBT msbt = new MSBT(decompressedBytes);
                             msbt.SizePerAttribute = 15; // this is 19 by default for some reason??
-                            var yamlLines = msbt.ToYaml().Split('\n');
+                            var yamlLines = msbt.ToYaml(msbp).Split('\n');
 
                             // Update Names
                             for (int i = 0; i < yamlLines.Length; i++)
@@ -273,7 +274,8 @@ namespace JamboreeCharaTool
 
                             // Convert back to MSBT
                             string yamlTxt = string.Join('\n', yamlLines);
-                            MSBT newMsbt = MSBT.FromYaml(yamlTxt, null);
+                            File.WriteAllText("msbt.yaml", yamlTxt);
+                            MSBT newMsbt = MSBT.FromYaml(yamlTxt, msbp);
 
                             // Compress MSBT and replace OG file in BEA
                             var zstdMsbt = new Zstd().Compress(newMsbt.Save());

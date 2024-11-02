@@ -24,6 +24,9 @@
     <PackageReference Include="ZstdSharp.Port" Version="0.8.1" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Dependencies\bq.msbp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Dependencies\Default\DefaultProject.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
