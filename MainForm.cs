@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using ShrineFox.IO;
 using MetroSet_UI.Forms;
 using BezelEngineArchive_Lib;
 using CLMS;
 using System.Linq;
-using Newtonsoft.Json;
 using System.Windows.Forms;
-using System.Drawing;
+using FirstPlugin;
+using SarcLibrary;
+using BntxLibrary;
+using Revrs;
 
 namespace JamboreeCharaTool
 {
@@ -23,44 +24,50 @@ namespace JamboreeCharaTool
             // Use existing project's character data as a base
             CharaData[] importedCharaData = project.Characters.Copy();
 
-            // For each language's message BEA file...
-            foreach (var file in Directory.GetFiles(folder).Where(x => Path.GetFileName(x).StartsWith("message~")))
-            {
-                string language = Path.GetFileNameWithoutExtension(file).Replace("message~", "").Replace(".nx", "");
+            ImportCharacterNames(folder, importedCharaData);
+            ImportProfilePics(folder, importedCharaData);
 
-                // Extract MSBT from BEA
+            ChooseCharactersToImport(importedCharaData);
+        }
+
+        private void ImportProfilePics(string folder, CharaData[] importedCharaData)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ImportCharacterNames(string folder, CharaData[] importedCharaData)
+        {
+            foreach (var file in Directory.GetFiles(folder).Where(x => Path.GetFileName(x).StartsWith("nq.nx")))
+            {
+                // Extract images from BEA
                 using (FileStream fs = new FileStream(file, FileMode.Open))
                 {
                     BezelEngineArchive bea = new BezelEngineArchive(fs);
-                    foreach (var archiveFile in bea.FileList)
+                    
+                    foreach (var archiveFile in bea.FileList.Where(x => x.Key == "Parts.lyt"))
                     {
-                        // Extract im_common.msbt
-                        if (archiveFile.Key.Contains("im_common"))
+                        
+                        // Extract image data from SARC
+
+                        var bytes = archiveFile.Value.FileData;
+
+                        Sarc sarc = Sarc.FromBinary(bytes);
+                        ReadOnlySpan<byte> bntxData = sarc["timg/__Combined.bntx"];
+                        Stream stream = new MemoryStream(bntxData.ToArray());
+
+                        RevrsReader reader = new(bntxData.ToArray());
+                        BntxView bntx = new(ref reader);
+
+                        foreach ((var name, var tex) in bntx)
                         {
-                            var bytes = archiveFile.Value.FileData;
-
-                            // Convert to YAML
-                            var decompressedBytes = new Zstd().Decompress(bytes);
-                            MSBT msbt = new MSBT(decompressedBytes);
-                            var yamlLines = msbt.ToYaml().Split('\n');
-
-                            // Get Names
-                            for (int i = 0; i < yamlLines.Length; i++)
-                            {
-                                if (yamlLines[i].StartsWith("  im_pc"))
-                                {
-                                    int id = Convert.ToInt32(yamlLines[i].Replace("  im_pc", "").Split('_')[0]);
-                                    string name = yamlLines[i + 1].Replace("    Contents: ", "").Replace("\r", "");
-
-                                    SetCharacterName(importedCharaData.First(x => x.ID == id), name, language);
-                                }
-                            }
+                            bntx.
                         }
-                    }
                 }
             }
+        }
 
-            // Decide which data to import
+        private void ChooseCharactersToImport(CharaData[] importedCharaData)
+        {
             for (int i = 0; i < project.Characters.Length; i++)
             {
                 var ogChar = project.Characters[i];
@@ -85,6 +92,13 @@ namespace JamboreeCharaTool
             if (!Directory.Exists(folder))
                 return;
 
+            ExportCharacterNames(folder);
+
+            MessageBox.Show("Done exporting mod!");
+        }
+
+        private void ExportCharacterNames(string folder)
+        {
             // For each language's message BEA file...
             foreach (var file in Directory.GetFiles(Path.Combine(extractedRomfsDir, "Archive")).Where(x => Path.GetFileName(x).StartsWith("message~")))
             {
@@ -136,7 +150,6 @@ namespace JamboreeCharaTool
                     bea.Save(Path.Combine(outDir, Path.GetFileName(file)));
                 }
             }
-            MessageBox.Show("Done exporting mod!");
         }
     }
 }

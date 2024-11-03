@@ -181,7 +181,7 @@ namespace JamboreeCharaTool
             comboBox_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBox_Language.Name = "comboBox_Language";
             comboBox_Language.Size = new System.Drawing.Size(191, 28);
-            comboBox_Language.SelectedIndexChanged += this.SelectedLanguage_Changed;
+            comboBox_Language.SelectedIndexChanged += SelectedLanguage_Changed;
             // 
             // splitContainer_Main
             // 
@@ -210,8 +210,8 @@ namespace JamboreeCharaTool
             metroSetTabControl_Main.AnimateEasingType = MetroSet_UI.Enums.EasingType.CubeOut;
             metroSetTabControl_Main.AnimateTime = 200;
             metroSetTabControl_Main.BackgroundColor = System.Drawing.Color.FromArgb(30, 30, 30);
-            metroSetTabControl_Main.Controls.Add(tabPage_Graphics);
             metroSetTabControl_Main.Controls.Add(tabPage_Overview);
+            metroSetTabControl_Main.Controls.Add(tabPage_Graphics);
             metroSetTabControl_Main.Controls.Add(tabPage_Sound);
             metroSetTabControl_Main.Controls.Add(tabPage_Text);
             metroSetTabControl_Main.Dock = System.Windows.Forms.DockStyle.Fill;
